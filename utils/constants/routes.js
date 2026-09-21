@@ -1,61 +1,66 @@
+const videoUrl = 'https://upload.wikimedia.org/wikipedia/commons/d/dd/Christ_Church_Cathedral_Dublin_video.webm';
+
 export default [
   {
     id: 'home',
-    title: { fr: 'accueil', en: 'home' },
+    title: { fr: 'Accueil', en: 'Home' },
     path: '/',
-    video: 'https://upload.wikimedia.org/wikipedia/commons/d/dd/Christ_Church_Cathedral_Dublin_video.webm',
+    video: videoUrl,
   },
   {
     id: 'notre-approche',
-    title: { fr: 'notre approche', en: 'our approach' },
+    title: { fr: 'Notre Approche', en: 'Our Approach' },
     path: '/projects/notre-approche',
-    video: 'https://upload.wikimedia.org/wikipedia/commons/d/dd/Christ_Church_Cathedral_Dublin_video.webm',
+    video: videoUrl,
   },
   {
     id: 'notre-methode',
-    title: { fr: 'notre méthode', en: 'our method' },
+    title: { fr: 'Notre Méthode', en: 'Our Method' },
     path: '/projects/notre-methode',
-    video: 'https://upload.wikimedia.org/wikipedia/commons/d/dd/Christ_Church_Cathedral_Dublin_video.webm',
+    video: videoUrl,
   },
   {
     id: 'decouverte',
-    title: { fr: 'découverte', en: 'discovery' },
+    title: { fr: 'Phase Découverte', en: 'Discovery Phase' },
     path: '/projects/decouverte',
-    video: 'https://upload.wikimedia.org/wikipedia/commons/d/dd/Christ_Church_Cathedral_Dublin_video.webm',
-  },
-  {
-    id: 'lequipe',
-    title: { fr: "l'équipe", en: 'the team' },
-    path: '/projects/lequipe',
-    video: 'https://upload.wikimedia.org/wikipedia/commons/d/dd/Christ_Church_Cathedral_Dublin_video.webm',
+    video: videoUrl,
   },
   {
     id: 'feuille-de-route',
-    title: { fr: 'feuille de route', en: 'roadmap' },
+    title: { fr: 'Feuille de Route', en: 'Roadmap' },
     path: '/projects/feuille-de-route',
-    video: 'https://upload.wikimedia.org/wikipedia/commons/d/dd/Christ_Church_Cathedral_Dublin_video.webm',
+    video: videoUrl,
   },
-];
-
-export const methodologyRoutes = [
   {
     id: 'gouvernance',
-    title: { fr: 'gouvernance', en: 'governance' },
+    title: { fr: 'Gouvernance & RACI', en: 'Governance & RACI' },
     path: '/projects/gouvernance',
+    video: videoUrl,
   },
   {
     id: 'parcours-utilisateur',
-    title: { fr: 'parcours utilisateur', en: 'user journey' },
+    title: { fr: 'Parcours Utilisateur', en: 'User Journey' },
     path: '/projects/parcours-utilisateur',
+    video: videoUrl,
   },
   {
     id: 'flux-donnees',
-    title: { fr: 'flux de données', en: 'data flow' },
+    title: { fr: 'Flux de Données', en: 'Data Flow' },
     path: '/projects/flux-donnees',
+    video: videoUrl,
   },
   {
     id: 'qualite',
-    title: { fr: 'qualité & recette', en: 'quality & acceptance' },
+    title: { fr: 'Qualité & Recette', en: 'Quality & Testing' },
     path: '/projects/qualite',
+    video: videoUrl,
+  },
+  {
+    id: 'lequipe',
+    title: { fr: "L'Équipe", en: 'The Team' },
+    path: '/projects/lequipe',
+    video: videoUrl,
   },
 ];
+
+export const methodologyRoutes = [];

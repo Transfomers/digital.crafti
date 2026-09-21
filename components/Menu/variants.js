@@ -20,7 +20,7 @@ export const listItemsVariants = {
 
 export const linkVariants = {
   initial: ({ isMobile }) => {
-    return isMobile ? { x: 0 } : { x: -74 };
+    return isMobile ? { x: 0 } : { x: -54 };
   },
   hover: ({ isMobile, color }) => {
     return isMobile ? { color } : { x: 0 };

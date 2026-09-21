@@ -4,8 +4,6 @@ import ContentSection from '../components/Home/Content';
 import FeaturedSection from '../components/Home/FeaturedProject';
 import AboutSection from '../components/Home/About';
 import ContactSection from '../components/Home/Contact';
-import Footer from '../components/Home/Footer';
-
 const Home = () => {
   return (
     <>
@@ -14,7 +12,6 @@ const Home = () => {
       <FeaturedSection />
       <AboutSection />
       <ContactSection />
-      <Footer />
     </>
   );
 };

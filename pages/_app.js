@@ -9,6 +9,7 @@ import GlobalStyles from '../styles/global';
 import darkTheme from '../styles/themes/dark';
 import lightTheme from '../styles/themes/light';
 import AppBar from '../components/AppBar';
+import Footer from '../components/Home/Footer';
 import Cursor from '../components/Cursor';
 import Menu from '../components/Menu';
 import SiteOfTheDay from '../components/SiteOfTheDay';
@@ -69,6 +70,7 @@ const App = ({ Component, pageProps }) => {
                 <Header />
                 <Menu />
                 <Component {...pageProps} />
+                <Footer />
                 <Cursor />
                 <SiteOfTheDay />
               </ThemedApp>

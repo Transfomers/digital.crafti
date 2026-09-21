@@ -9,26 +9,19 @@ import MenuButton from '../MenuButton';
 export const Backdrop = styled(DefaultBackdrop)`
   background: ${({ theme }) => theme.colors.red};
   color: ${({ theme }) => theme.background};
-
-  ${({ theme }) => theme.breakpoints.small`
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  `};
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 `;
 
 export const Container = styled.div`
   ${containerStyles};
   width: 100%;
-  height: 100%;
+  height: auto;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  ${({ theme }) => theme.breakpoints.small`
-    height: auto;
-    min-height: 100%;
-    padding-bottom: 40px;
-  `};
+  padding-bottom: 40px;
 `;
 
 const Row = styled.div`
@@ -149,13 +142,8 @@ export const SocialMedia = styled(DefaultSocialMedia)`
 `;
 
 export const Navigation = styled.nav`
-  height: 462px;
-
-  ${({ theme }) => theme.breakpoints.small`
-    position: static;
-    height: auto;
-    margin: 20px 0 32px;
-  `};
+  height: auto;
+  margin: 16px 0 28px;
 `;
 
 export const List = styled(motion.ul)`
@@ -172,20 +160,19 @@ export const List = styled(motion.ul)`
 export const Link = styled(motion.a)`
   display: flex;
   align-items: center;
-  font-size: 57px;
-  font-size: 3.5625rem;
-  line-height: 1.5964912281;
+  font-size: 2.35rem;
+  line-height: 1.45;
   font-weight: 900;
   text-transform: uppercase;
   will-change: transform;
 
   ${({ theme }) => theme.breakpoints.tablet`
-    font-size: 1.75rem;
-    line-height: 1.7857142857;
+    font-size: 1.6rem;
+    line-height: 1.5;
   `};
 
   ${({ theme }) => theme.breakpoints.small`
-    font-size: 1.35rem;
+    font-size: 1.25rem;
     line-height: 1.5;
   `};
 `;
@@ -193,15 +180,15 @@ export const Link = styled(motion.a)`
 export const ArrowContainer = styled.span`
   display: block;
   overflow: hidden;
-  width: 68px;
-  height: 57px;
+  width: 48px;
+  height: 38px;
   padding-right: 6px;
   margin-right: 6px;
 
   & svg {
     float: right;
-    width: 101px;
-    height: 57px;
+    width: 70px;
+    height: 38px;
   }
 
   ${({ theme }) => theme.breakpoints.small`

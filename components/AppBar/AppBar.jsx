@@ -28,37 +28,46 @@ const AppBar = props => {
     ...rootProps
   } = props;
   const [hidden, setHidden] = React.useState(false);
+  const [isScrolled, setIsScrolled] = React.useState(false);
   const { lang } = useLanguage();
-  const [, menuDispatch] = useMenuContext();
+  const [{ isMenuOpen }, menuDispatch] = useMenuContext();
+  const lastScrollY = React.useRef(0);
 
   React.useEffect(() => {
     const handleScroll = () => {
-      let shouldHide = false;
-      let intersection = offset;
-      let currentYPosition = 0;
+      const currentY = window.scrollY || document.documentElement.scrollTop;
 
       if (direction === 'down') {
-        currentYPosition = window.scrollY;
-      } else if (direction === 'up') {
-        currentYPosition =
-          document.documentElement.scrollTop + window.innerHeight;
-        intersection = document.documentElement.scrollHeight - offset;
-      }
+        setIsScrolled(currentY > 40);
 
-      shouldHide = currentYPosition > intersection;
-      if (shouldHide !== hidden) {
-        setHidden(shouldHide);
+        if (isMenuOpen || currentY <= 80) {
+          setHidden(false);
+        } else {
+          const scrollDelta = currentY - lastScrollY.current;
+          if (scrollDelta < -4) {
+            // Reveal header immediately on upward scroll
+            setHidden(false);
+          } else if (scrollDelta > 4 && currentY > 120) {
+            // Hide header when scrolling down
+            setHidden(true);
+          }
+        }
+        lastScrollY.current = currentY;
+      } else if (direction === 'up') {
+        const intersection = document.documentElement.scrollHeight - offset;
+        const currentYPosition = currentY + window.innerHeight;
+        setHidden(currentYPosition <= intersection);
       }
     };
 
     handleScroll();
 
-    window.addEventListener('scroll', handleScroll, false);
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
-      window.removeEventListener('scroll', handleScroll, false);
+      window.removeEventListener('scroll', handleScroll);
     };
-  }, [hidden, direction, offset]);
+  }, [hidden, direction, offset, isMenuOpen]);
 
   const styles = getStyles(direction);
 
@@ -67,8 +76,9 @@ const AppBar = props => {
       variants={variants}
       initial="hidden"
       animate={hidden ? 'hidden' : 'show'}
+      isScrolled={isScrolled}
       transition={{
-        duration: 1,
+        duration: 0.45,
         ease: [0.666, 0, 0.237, 1],
       }}
       style={{
