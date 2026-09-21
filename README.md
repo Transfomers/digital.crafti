@@ -1,25 +1,21 @@
 <h1 align="center">
-  <img src="./.github/images/demo.gif" width="600"/>
+  <img src="./public/image.png" width="600"/>
 </h1>
 
 <h3 align="center">
-  Awwwards Furrow Studio Website Rebuilt
+  Crafti Studio Website
 </h3>
 
-[![Author](https://img.shields.io/badge/author-rodrigogama-brightgreen)](https://github.com/rodrigogama)
-[![Issues](https://img.shields.io/github/issues/rodrigogama/awwwards-rebuilt-furrow)](https://github.com/rodrigogama/awwwards-rebuilt-furrow/issues)
-[![Stars](https://img.shields.io/github/stars/rodrigogama/awwwards-rebuilt-furrow)](https://github.com/rodrigogama/awwwards-rebuilt-furrow/stargazers)
-[![Forks](https://img.shields.io/github/forks/rodrigogama/awwwards-rebuilt-furrow)](https://github.com/rodrigogama/awwwards-rebuilt-furrow/network/members)
-[![Contributors](https://img.shields.io/github/contributors/rodrigogama/awwwards-rebuilt-furrow)](https://github.com/rodrigogama/awwwards-rebuilt-furrow/graphs/contributors)
+[![Author](https://img.shields.io/badge/author-craftistudio-brightgreen)](https://craftistudio.tech)
 
 ---
 
-This project is based on [Akram's](https://github.com/wrongakram) outstanding Awwwards Rebuilt series. You can check it on his [YouTube Channel](https://www.youtube.com/c/WrongAkram/videos).
+This project is the official website for Crafti Studio.
 
 ---
 
 # 🔥 Live version
-Check it out [here](https://awwwards-rebuilt-furrow.vercel.app)
+Check it out [here](https://craftistudio.tech)
 
 # ⚛ About the project
 This project is built using Nextjs, Context API, styled-components, framer-motion, canvas and more!
