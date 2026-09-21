@@ -132,11 +132,60 @@ export const VideoPreview = styled.div`
 
 export const MenuContainer = styled(motion.div)`
   display: flex;
+  align-items: center;
   justify-content: flex-end;
+  gap: 16px;
   width: 100%;
 
   ${({ theme }) => theme.breakpoints.tablet`
     justify-content: flex-start;
+    gap: 12px;
+  `};
+`;
+
+export const PdfDownloadLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 63px;
+  height: 63px;
+  border-radius: 50%;
+  border: 1.5px solid ${({ theme }) => theme.colors.red};
+  background: ${({ theme }) => (theme.name === 'light' ? '#fff0f0' : 'rgba(234, 40, 30, 0.1)')};
+  color: ${({ theme }) => theme.colors.red};
+  cursor: pointer;
+  flex-shrink: 0;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(234, 40, 30, 0.15);
+
+  & svg {
+    width: 22px;
+    height: 22px;
+    stroke: ${({ theme }) => theme.colors.red};
+    transition: transform 0.2s ease;
+  }
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.red};
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(234, 40, 30, 0.3);
+
+    & svg {
+      stroke: #ffffff;
+      transform: scale(1.1);
+    }
+  }
+
+  ${({ theme }) => theme.breakpoints.tablet`
+    width: 47px;
+    height: 47px;
+
+    & svg {
+      width: 18px;
+      height: 18px;
+    }
   `};
 `;
 

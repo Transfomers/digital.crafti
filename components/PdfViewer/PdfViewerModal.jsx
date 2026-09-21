@@ -24,8 +24,8 @@ const TriggerButton = styled.button`
   box-shadow: 0 4px 20px rgba(234, 40, 30, 0.15);
 
   & svg {
-    width: 18px;
-    height: 18px;
+    width: ${({ iconOnly }) => (iconOnly ? '22px' : '18px')};
+    height: ${({ iconOnly }) => (iconOnly ? '22px' : '18px')};
     stroke: ${({ theme }) => theme.colors.red};
     transition: transform 0.2s ease;
   }
@@ -42,7 +42,22 @@ const TriggerButton = styled.button`
     }
   }
 
-  ${({ theme }) => theme.breakpoints.tablet`
+  ${({ iconOnly, theme }) =>
+    iconOnly
+      ? `
+    width: 63px;
+    height: 63px;
+    padding: 0;
+    border-radius: 50%;
+    justify-content: center;
+    flex-shrink: 0;
+
+    ${theme.breakpoints.tablet`
+      width: 47px;
+      height: 47px;
+    `};
+  `
+      : theme.breakpoints.tablet`
     padding: 10px 20px;
     font-size: 0.875rem;
     gap: 8px;
@@ -212,6 +227,8 @@ const PdfViewerModal = ({
   pdfUrl = '/docs/presentation-crafti.pdf',
   title = 'Dossier Technique & Méthodologie',
   buttonText,
+  iconOnly = false,
+  ...props
 }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const { lang } = useLanguage();
@@ -230,9 +247,13 @@ const PdfViewerModal = ({
         onClick={() => setIsOpen(true)}
         onMouseEnter={addCursorBorder}
         onMouseLeave={removeCursorBorder}
+        iconOnly={iconOnly}
+        title={defaultButtonLabel}
+        aria-label={defaultButtonLabel}
+        {...props}
       >
         <FilePdf />
-        <span>{defaultButtonLabel}</span>
+        {!iconOnly && <span>{defaultButtonLabel}</span>}
       </TriggerButton>
 
       <AnimatePresence>

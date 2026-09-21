@@ -18,6 +18,7 @@ import {
   VideoPreview,
   MenuContainer,
   MenuButton,
+  PdfDownloadLink,
 } from './styles';
 
 const transition = {
@@ -119,44 +120,32 @@ const FeaturedProject = () => {
         </motion.div>
       </AnimateOnScreen>
       <AnimateOnScreen>
-        <MenuContainer style={{ display: 'flex', gap: '16px', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
+        <MenuContainer>
+          <PdfDownloadLink
+            href="/docs/presentation-crafti.pdf"
+            download="presentation-crafti.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            title={lang === 'fr' ? 'Télécharger le PDF' : 'Download PDF'}
+            aria-label={lang === 'fr' ? 'Télécharger le PDF' : 'Download PDF'}
+            onMouseEnter={addCursorBorder}
+            onMouseLeave={removeCursorBorder}
+          >
+            <Download />
+          </PdfDownloadLink>
+
+          <PdfViewerModal
+            iconOnly={true}
+            pdfUrl="/docs/presentation-crafti.pdf"
+            title={lang === 'fr' ? 'Dossier de Présentation CRAFTI × EMUC' : 'CRAFTI × EMUC Presentation Dossier'}
+            buttonText={lang === 'fr' ? 'Consulter le PDF' : 'View PDF'}
+          />
+
           <MenuButton
             sticky={false}
             title={lang === 'fr' ? 'Tous les Projets' : 'All Projects'}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-          />
-          <a
-            href="/docs/presentation-crafti.pdf"
-            download="presentation-crafti.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            onMouseEnter={addCursorBorder}
-            onMouseLeave={removeCursorBorder}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '10px',
-              padding: '14px 28px',
-              borderRadius: '9999px',
-              background: '#EA281E',
-              color: '#ffffff',
-              fontSize: '1rem',
-              fontWeight: 800,
-              textTransform: 'uppercase',
-              letterSpacing: '1px',
-              textDecoration: 'none',
-              boxShadow: '0 4px 20px rgba(234, 40, 30, 0.35)',
-              transition: 'all 0.2s ease',
-            }}
-          >
-            <Download size={18} stroke="#ffffff" />
-            <span>{lang === 'fr' ? 'Télécharger le PDF' : 'Download PDF'}</span>
-          </a>
-          <PdfViewerModal
-            pdfUrl="/docs/presentation-crafti.pdf"
-            title={lang === 'fr' ? 'Dossier de Présentation CRAFTI × EMUC' : 'CRAFTI × EMUC Presentation Dossier'}
-            buttonText={lang === 'fr' ? 'Consulter le PDF' : 'View PDF'}
           />
         </MenuContainer>
       </AnimateOnScreen>
