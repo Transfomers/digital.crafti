@@ -48,6 +48,9 @@ export const ThemeContextProvider = ({ children }) => {
 };
 
 export const useThemeContext = () => {
-  const { state, dispatch } = React.useContext(ThemeContext);
-  return [state, dispatch];
+  const context = React.useContext(ThemeContext);
+  if (!context) {
+    return [INITIAL_STATE, () => {}];
+  }
+  return [context.state, context.dispatch];
 };

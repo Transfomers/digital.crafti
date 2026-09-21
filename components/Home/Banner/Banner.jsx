@@ -72,17 +72,15 @@ const Banner = () => {
           <source src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Christ_Church_Cathedral_Dublin_video.webm" type="video/webm" />
         </video>
       </VideoContainer>
-      {!isMobile && (
-        <CanvasEraser
-          ref={canvasRef}
-          width={windowSize.width}
-          height={windowSize.height}
-          size={120}
-          background={theme.background}
-          onMouseEnter={addCursorBorder}
-          onMouseLeave={removeCursorBorder}
-        />
-      )}
+      <CanvasEraser
+        ref={canvasRef}
+        width={windowSize.width}
+        height={windowSize.height}
+        size={120}
+        background={theme.background}
+        onMouseEnter={addCursorBorder}
+        onMouseLeave={removeCursorBorder}
+      />
       <BannerSubtitle>
         {lang === 'fr' ? 'CRAFTI & l’EMUC.' : 'CRAFTI & EMUC.'}
       </BannerSubtitle>

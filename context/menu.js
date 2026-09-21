@@ -40,6 +40,9 @@ export const MenuContextProvider = ({ children }) => {
 };
 
 export const useMenuContext = () => {
-  const { state, dispatch } = React.useContext(MenuContext);
-  return [state, dispatch];
+  const context = React.useContext(MenuContext);
+  if (!context) {
+    return [INITIAL_STATE, () => {}];
+  }
+  return [context.state, context.dispatch];
 };

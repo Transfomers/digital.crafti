@@ -8,7 +8,6 @@ export const BannerSection = styled.section`
   width: 100%;
   margin-bottom: 240px;
   background: ${({ theme }) => theme.background};
-  overflow: hidden;
 
   & canvas {
     display: block;
@@ -22,6 +21,10 @@ export const BannerSection = styled.section`
 
   ${({ theme }) => theme.breakpoints.tablet`
     margin-bottom: 90px;
+
+    & canvas {
+      display: none !important;
+    }
   `};
 
   ${({ theme }) => theme.breakpoints.small`

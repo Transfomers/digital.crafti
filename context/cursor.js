@@ -80,6 +80,9 @@ export const CursorContextProvider = ({ children }) => {
 };
 
 export const useCursorContext = () => {
-  const { state, dispatch } = React.useContext(CursorContext);
-  return [state, dispatch];
+  const context = React.useContext(CursorContext);
+  if (!context) {
+    return [INITIAL_STATE, () => {}];
+  }
+  return [context.state, context.dispatch];
 };

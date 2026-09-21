@@ -16,4 +16,10 @@ export const LanguageProvider = ({ children }) => {
   );
 };
 
-export const useLanguage = () => useContext(LanguageContext);
+export const useLanguage = () => {
+  const context = useContext(LanguageContext);
+  if (!context) {
+    return { lang: 'fr', toggleLang: () => {} };
+  }
+  return context;
+};
