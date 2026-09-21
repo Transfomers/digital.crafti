@@ -105,8 +105,10 @@ export const FooterText = styled.p`
   }
 
   &.copyright {
-    font-size: 0.875rem;
-    line-height: 1.0714285714;
+    font-size: 0.75rem;
+    line-height: 1.2;
+    opacity: 0.7;
+    letter-spacing: 0.5px;
     align-self: flex-end;
   }
 
@@ -117,14 +119,16 @@ export const FooterText = styled.p`
     &.copyright {
       position: static;
       margin-top: 14px;
-      font-size: 0.75rem;
+      font-size: 0.6875rem;
       line-height: 1.2;
+      opacity: 0.7;
     }
   `};
 
   ${({ theme }) => theme.breakpoints.tablet`
     &.copyright {
       margin-top: 10px;
+      font-size: 0.6875rem;
     }
   `};
 `;

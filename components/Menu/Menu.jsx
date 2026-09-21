@@ -219,7 +219,7 @@ const Menu = () => {
                   +237 679 428 243
                 </FooterText>
               </FooterBlock>
-              <FooterText className="copyright">© Crafti 2026</FooterText>
+              <FooterText className="copyright">© Crafti studio 2026</FooterText>
               {isMobile && (
                 <Address>
                   <FooterText>

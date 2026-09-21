@@ -50,9 +50,14 @@ const Contact = () => {
             </a>
           </div>
         </div>
-        <address className="column contact-text">
-          Yaoundé, {lang === 'fr' ? 'Cameroun' : 'Cameroon'}
-        </address>
+        <div className="column address-col">
+          <address className="contact-text">
+            Yaoundé, {lang === 'fr' ? 'Cameroun' : 'Cameroon'}
+          </address>
+          <span className="copyright-text">
+            © Crafti studio 2026
+          </span>
+        </div>
         <SocialMedia className="column" />
       </ContactSection>
     </AnimateOnScreen>

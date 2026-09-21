@@ -48,6 +48,18 @@ export const ContactSection = styled(motion.section)`
     padding: 0 8px;
   }
 
+  & .copyright-text {
+    ${secondaryFontStyle};
+    font-size: 0.75rem;
+    line-height: 1.3;
+    opacity: 0.65;
+    margin-top: 8px;
+    display: block;
+    padding: 0 8px;
+    color: ${({ theme }) => theme.text};
+    letter-spacing: 0.5px;
+  }
+
   ${({ theme }) => theme.breakpoints.medium`
     & .column {
       width: 41.666%;
