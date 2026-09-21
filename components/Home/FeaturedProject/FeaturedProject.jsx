@@ -8,6 +8,7 @@ import useMediaQuery from '../../../hooks/useMediaQuery';
 import useStyledTheme from '../../../hooks/useStyledTheme';
 import AnimateOnScreen from '../../AnimateOnScreen';
 import Arrow from '../../Icons/Arrow';
+import PdfViewerModal from '../../PdfViewer';
 import {
   ContentSection,
   ProjectAnchor,
@@ -117,12 +118,17 @@ const FeaturedProject = () => {
         </motion.div>
       </AnimateOnScreen>
       <AnimateOnScreen>
-        <MenuContainer>
+        <MenuContainer style={{ display: 'flex', gap: '20px', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' }}>
           <MenuButton
             sticky={false}
             title={lang === 'fr' ? 'Tous les Projets' : 'All Projects'}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+          />
+          <PdfViewerModal
+            pdfUrl="/docs/presentation-crafti.pdf"
+            title={lang === 'fr' ? 'Dossier de Présentation CRAFTI × EMUC' : 'CRAFTI × EMUC Presentation Dossier'}
+            buttonText={lang === 'fr' ? 'Dossier PDF' : 'PDF Dossier'}
           />
         </MenuContainer>
       </AnimateOnScreen>

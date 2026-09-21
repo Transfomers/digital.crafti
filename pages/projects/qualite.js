@@ -10,6 +10,16 @@ import AnimateOnScreen from '../../components/AnimateOnScreen';
 import { useLanguage } from '../../context/language';
 import { translations } from '../../locales/qualite';
 import routes, { methodologyRoutes } from '../../utils/constants/routes';
+import PdfViewerModal from '../../components/PdfViewer';
+import {
+  Award,
+  CheckCircle,
+  Shield,
+  FilePdf,
+  Zap,
+  Target,
+  Rocket,
+} from '../../components/Icons/ProjectIcons';
 
 // ================= STYLES ================= //
 
@@ -279,6 +289,13 @@ const QualitePage = () => {
             <HeroLead>
               {t.heroLead}
             </HeroLead>
+            <div style={{ marginTop: '36px' }}>
+              <PdfViewerModal
+                pdfUrl="/docs/presentation-crafti.pdf"
+                title={lang === 'fr' ? 'Cadre d’Assurance Qualité & Tests' : 'Quality Assurance & Testing Framework'}
+                buttonText={lang === 'fr' ? 'Consulter le Plan Qualité (PDF)' : 'View Quality Plan (PDF)'}
+              />
+            </div>
           </AnimateOnScreen>
         </HeroSection>
         
@@ -292,6 +309,7 @@ const QualitePage = () => {
             <StepCard>
               <div className="step-header">
                 <span className="step-num">{t.p1Num}</span>
+                <Award size={24} color="#EA281E" style={{ marginLeft: '10px', marginRight: '6px' }} />
                 <h3 className="step-title">{t.p1Title}</h3>
               </div>
               <ul className="step-list">
@@ -321,19 +339,19 @@ const QualitePage = () => {
             </SectionHeader>
 
             <FlowChain>
-              <div className="node">BUILD</div>
+              <div className="node"><Zap size={18} color="#EA281E" style={{ marginBottom: '4px' }} />BUILD</div>
               <span className="sep">↓</span>
-              <div className="node">CODE REVIEW</div>
+              <div className="node"><Shield size={18} color="#EA281E" style={{ marginBottom: '4px' }} />CODE REVIEW</div>
               <span className="sep">↓</span>
-              <div className="node">QA</div>
+              <div className="node"><CheckCircle size={18} color="#EA281E" style={{ marginBottom: '4px' }} />QA</div>
               <span className="sep">↓</span>
-              <div className="node">INTEGRATION TEST</div>
+              <div className="node"><Target size={18} color="#EA281E" style={{ marginBottom: '4px' }} />INTEGRATION TEST</div>
               <span className="sep">↓</span>
-              <div className="node">EMUC DEMONSTRATION</div>
+              <div className="node"><Award size={18} color="#EA281E" style={{ marginBottom: '4px' }} />EMUC DEMONSTRATION</div>
               <span className="sep">↓</span>
-              <div className="node">ACCEPTANCE</div>
+              <div className="node"><CheckCircle size={18} color="#EA281E" style={{ marginBottom: '4px' }} />ACCEPTANCE</div>
               <span className="sep">↓</span>
-              <div className="node">RELEASE</div>
+              <div className="node"><Rocket size={18} color="#EA281E" style={{ marginBottom: '4px' }} />RELEASE</div>
             </FlowChain>
 
             <p style={{ marginTop: '24px', fontSize: '1.25rem', textAlign: 'center', opacity: 0.85, maxWidth: '800px', margin: '24px auto 0' }}>
@@ -342,6 +360,43 @@ const QualitePage = () => {
           </AnimateOnScreen>
         </SectionContainer>
         
+        {/* PDF BANNER */}
+        <SectionContainer>
+          <AnimateOnScreen>
+            <div style={{
+              padding: '48px 40px',
+              borderRadius: '16px',
+              border: '1.5px solid #EA281E',
+              background: '#fff8f8',
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: '24px'
+            }}>
+              <div>
+                <span style={{ color: '#EA281E', fontSize: '0.875rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1.5px', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                  <FilePdf size={18} color="#EA281E" />
+                  {lang === 'fr' ? 'PLAN ASSURANCE QUALITÉ' : 'QUALITY ASSURANCE PLAN'}
+                </span>
+                <h3 style={{ margin: '0 0 8px', fontSize: '1.75rem', fontWeight: 900, textTransform: 'uppercase' }}>
+                  {lang === 'fr' ? 'Critères d’Acceptation & Validation' : 'Acceptance Criteria & Validation'}
+                </h3>
+                <p style={{ margin: 0, opacity: 0.85, fontSize: '1.05rem', maxWidth: '600px' }}>
+                  {lang === 'fr'
+                    ? 'Découvrez les protocoles de tests fonctionnels, les seuils de performance et les tests de non-régression.'
+                    : 'Discover functional testing protocols, performance benchmarks, and non-regression suites.'}
+                </p>
+              </div>
+              <PdfViewerModal
+                pdfUrl="/docs/presentation-crafti.pdf"
+                title={lang === 'fr' ? 'Plan d’Assurance Qualité CRAFTI' : 'CRAFTI Quality Assurance Plan'}
+                buttonText={lang === 'fr' ? 'Consulter le PDF' : 'View PDF'}
+              />
+            </div>
+          </AnimateOnScreen>
+        </SectionContainer>
+
         {/* CALL TO ACTION & ROUTE NAV */}
         <NextProjectNav>
           <AnimateOnScreen>

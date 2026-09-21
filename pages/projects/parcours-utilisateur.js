@@ -10,6 +10,15 @@ import AnimateOnScreen from '../../components/AnimateOnScreen';
 import { useLanguage } from '../../context/language';
 import { translations } from '../../locales/parcours-utilisateur';
 import routes, { methodologyRoutes } from '../../utils/constants/routes';
+import PdfViewerModal from '../../components/PdfViewer';
+import {
+  Users,
+  Compass,
+  Search,
+  Sparkles,
+  CheckCircle,
+  FilePdf,
+} from '../../components/Icons/ProjectIcons';
 
 // ================= STYLES ================= //
 
@@ -287,6 +296,13 @@ const ParcoursPage = () => {
             <HeroLead>
               {t.heroLead}
             </HeroLead>
+            <div style={{ marginTop: '36px' }}>
+              <PdfViewerModal
+                pdfUrl="/docs/presentation-crafti.pdf"
+                title={lang === 'fr' ? 'Cartographie des Parcours Utilisateurs' : 'User Journey Mapping Dossier'}
+                buttonText={lang === 'fr' ? 'Consulter les Parcours (PDF)' : 'View Journey Map (PDF)'}
+              />
+            </div>
           </AnimateOnScreen>
         </HeroSection>
         
@@ -299,30 +315,35 @@ const ParcoursPage = () => {
 
             <FlowChain>
               <div className="node">
+                <Search size={22} color="#EA281E" style={{ marginBottom: '6px' }} />
                 {t.n1}
                 <span className="node-sub">{t.n1Sub}</span>
               </div>
               <span className="sep">↓</span>
               
               <div className="node">
+                <Compass size={22} color="#EA281E" style={{ marginBottom: '6px' }} />
                 {t.n2}
                 <span className="node-sub">{t.n2Sub}</span>
               </div>
               <span className="sep">↓</span>
               
               <div className="node">
+                <Sparkles size={22} color="#EA281E" style={{ marginBottom: '6px' }} />
                 {t.n3}
                 <span className="node-sub">{t.n3Sub}</span>
               </div>
               <span className="sep">↓</span>
               
               <div className="node">
+                <Users size={22} color="#EA281E" style={{ marginBottom: '6px' }} />
                 {t.n4}
                 <span className="node-sub">{t.n4Sub}</span>
               </div>
               <span className="sep">↓</span>
               
               <div className="node">
+                <CheckCircle size={22} color="#EA281E" style={{ marginBottom: '6px' }} />
                 {t.n5}
                 <span className="node-sub">{t.n5Sub}</span>
               </div>
@@ -331,6 +352,43 @@ const ParcoursPage = () => {
           </AnimateOnScreen>
         </SectionContainer>
         
+        {/* PDF BANNER */}
+        <SectionContainer>
+          <AnimateOnScreen>
+            <div style={{
+              padding: '48px 40px',
+              borderRadius: '16px',
+              border: '1.5px solid #EA281E',
+              background: '#fff8f8',
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: '24px'
+            }}>
+              <div>
+                <span style={{ color: '#EA281E', fontSize: '0.875rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1.5px', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                  <FilePdf size={18} color="#EA281E" />
+                  {lang === 'fr' ? 'EXPÉRIENCE UTILISATEUR' : 'USER EXPERIENCE'}
+                </span>
+                <h3 style={{ margin: '0 0 8px', fontSize: '1.75rem', fontWeight: 900, textTransform: 'uppercase' }}>
+                  {lang === 'fr' ? 'Dossier Ergonomie & Parcours' : 'UX & Journey Dossier'}
+                </h3>
+                <p style={{ margin: 0, opacity: 0.85, fontSize: '1.05rem', maxWidth: '600px' }}>
+                  {lang === 'fr'
+                    ? 'Découvrez les maquettes, personas et parcours d’engagement documentés.'
+                    : 'Discover wireframes, personas, and documented engagement journeys.'}
+                </p>
+              </div>
+              <PdfViewerModal
+                pdfUrl="/docs/presentation-crafti.pdf"
+                title={lang === 'fr' ? 'Parcours Utilisateurs CRAFTI' : 'CRAFTI User Journeys'}
+                buttonText={lang === 'fr' ? 'Consulter le PDF' : 'View PDF'}
+              />
+            </div>
+          </AnimateOnScreen>
+        </SectionContainer>
+
         {/* CALL TO ACTION & ROUTE NAV */}
         <NextProjectNav>
           <AnimateOnScreen>

@@ -7,9 +7,12 @@ import containerStyles from '../../styles/shared/container';
 import { secondaryFontStyle } from '../../styles/shared/text';
 import useCursorStyle from '../../hooks/useCursorStyle';
 import AnimateOnScreen from '../../components/AnimateOnScreen';
+import LinkedIn from '../../components/Icons/LinkedIn';
 import { useLanguage } from '../../context/language';
 import { translations } from '../../locales/lequipe';
 import routes, { methodologyRoutes } from '../../utils/constants/routes';
+import PdfViewerModal from '../../components/PdfViewer';
+import { Users, FilePdf } from '../../components/Icons/ProjectIcons';
 
 // ================= STYLES ================= //
 
@@ -130,26 +133,11 @@ const StepCard = styled.div`
     border-color: ${({ theme }) => theme.colors.red};
   }
 
-  & .step-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 20px;
-    border-bottom: 1px solid ${({ theme }) => (theme.name === 'light' ? '#ebebeb' : '#1f1f1f')};
-    padding-bottom: 16px;
-  }
-
-  & .step-title {
-    font-size: 1.85rem;
-    font-weight: 800;
-    margin: 0;
-    text-transform: uppercase;
-  }
-
   & .step-subtitle {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: ${({ theme }) => theme.colors.red};
+    font-size: 1.2rem;
+    line-height: 1.4;
+    font-weight: 500;
+    color: ${({ theme }) => (theme.name === 'light' ? '#444' : '#bbb')};
     margin: 0 0 24px;
   }
 
@@ -157,29 +145,122 @@ const StepCard = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px 24px;
-    margin: 0 0 28px;
+    margin: 0;
     padding: 0;
     list-style: none;
 
     & li {
       font-size: 1.05rem;
+      line-height: 1.4;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 10px;
 
       &::before {
         content: '•';
         color: ${({ theme }) => theme.colors.red};
         font-weight: bold;
+        font-size: 1.2rem;
+        line-height: 1;
       }
     }
   }
 
   ${({ theme }) => theme.breakpoints.small`
-    padding: 32px 20px;
-    & .step-header { flex-direction: column; gap: 8px; }
-    & .step-title { font-size: 1.4rem; }
-    & .step-list { grid-template-columns: 1fr; }
+    padding: 28px 20px;
+    & .step-subtitle { font-size: 1.05rem; }
+    & .step-list { grid-template-columns: 1fr; gap: 10px; }
+  `};
+`;
+
+const MemberHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  border-bottom: 1px solid ${({ theme }) => (theme.name === 'light' ? '#ebebeb' : '#1f1f1f')};
+  padding-bottom: 20px;
+  gap: 16px;
+
+  ${({ theme }) => theme.breakpoints.small`
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  `};
+`;
+
+const MemberInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+`;
+
+const MemberName = styled.h3`
+  font-size: 2.1rem;
+  font-weight: 900;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  color: ${({ theme }) => theme.text};
+
+  ${({ theme }) => theme.breakpoints.tablet`
+    font-size: 1.6rem;
+  `};
+`;
+
+const RoleBadge = styled.span`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: ${({ theme }) => theme.colors.red};
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  ${({ theme }) => theme.breakpoints.tablet`
+    font-size: 0.95rem;
+  `};
+`;
+
+const LinkedInButton = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  border: 1.5px solid ${({ theme }) => (theme.name === 'light' ? '#e0e0e0' : '#262626')};
+  background: ${({ theme }) => (theme.name === 'light' ? '#ffffff' : '#141414')};
+  color: ${({ theme }) => theme.text};
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+
+  & svg {
+    width: 17px;
+    height: 17px;
+    fill: ${({ theme }) => theme.colors.red};
+    transition: transform 0.2s ease;
+  }
+
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.red};
+    background: ${({ theme }) => theme.colors.red};
+    color: #ffffff;
+
+    & svg {
+      fill: #ffffff;
+      transform: scale(1.1);
+    }
+  }
+
+  ${({ theme }) => theme.breakpoints.small`
+    padding: 8px 16px;
+    font-size: 0.8125rem;
+    align-self: flex-start;
   `};
 `;
 
@@ -262,6 +343,13 @@ const TheTeamPage = () => {
             <HeroLead>
               {t.heroLead}
             </HeroLead>
+            <div style={{ marginTop: '36px' }}>
+              <PdfViewerModal
+                pdfUrl="/docs/presentation-crafti.pdf"
+                title={lang === 'fr' ? 'Présentation de l’Équipe & Dossier CRAFTI' : 'CRAFTI Team & Company Dossier'}
+                buttonText={lang === 'fr' ? 'Consulter le Dossier Complet (PDF)' : 'View Full Dossier (PDF)'}
+              />
+            </div>
           </AnimateOnScreen>
         </HeroSection>
 
@@ -273,124 +361,80 @@ const TheTeamPage = () => {
               <SectionHeading>{t.s1Head}</SectionHeading>
             </SectionHeader>
 
-            <StepCard>
-              <div className="step-header">
-                <h3 className="step-title">{t.p1Title}</h3>
-              </div>
-              <h4 className="step-subtitle">{t.p1Sub}</h4>
-              <ul className="step-list">
-                <li>{t.p1L[0]}</li>
-                <li>{t.p1L[1]}</li>
-                <li>{t.p1L[2]}</li>
-                <li>{t.p1L[3]}</li>
-                <li>{t.p1L[4]}</li>
-                <li>{t.p1L[5]}</li>
-              </ul>
-            </StepCard>
+            {t.members && t.members.map((member, idx) => (
+              <StepCard key={idx}>
+                <MemberHeader>
+                  <MemberInfo>
+                    <MemberName>{member.name}</MemberName>
+                    <RoleBadge>{member.role}</RoleBadge>
+                  </MemberInfo>
+                  {member.linkedin && (
+                    <LinkedInButton
+                      href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onMouseEnter={addCursorBorder}
+                      onMouseLeave={removeCursorBorder}
+                      title={`LinkedIn: ${member.name}`}
+                    >
+                      <LinkedIn />
+                      <span>LinkedIn</span>
+                    </LinkedInButton>
+                  )}
+                </MemberHeader>
+                <h4 className="step-subtitle">{member.sub}</h4>
+                <ul className="step-list">
+                  {member.skills.map((skill, sIdx) => (
+                    <li key={sIdx}>{skill}</li>
+                  ))}
+                </ul>
+                {member.quote && (
+                  <QuoteCard style={{ marginTop: '24px', borderColor: theme.colors.red, padding: '24px' }}>
+                    <p style={{ fontStyle: 'italic', fontSize: '1.2rem' }}>
+                      &ldquo;{member.quote}&rdquo;
+                    </p>
+                  </QuoteCard>
+                )}
+              </StepCard>
+            ))}
 
-            <StepCard>
-              <div className="step-header">
-                <h3 className="step-title">{t.p2Title}</h3>
-              </div>
-              <h4 className="step-subtitle">{t.p2Sub}</h4>
-              <ul className="step-list">
-                <li>{t.p2L[0]}</li>
-                <li>{t.p2L[1]}</li>
-                <li>{t.p2L[2]}</li>
-                <li>{t.p2L[3]}</li>
-                <li>{t.p2L[4]}</li>
-                <li>{t.p2L[5]}</li>
-                <li>{t.p2L[6]}</li>
-                <li>{t.p2L[7]}</li>
-              </ul>
-            </StepCard>
+          </AnimateOnScreen>
+        </SectionContainer>
 
-            <StepCard>
-              <div className="step-header">
-                <h3 className="step-title">{t.p3Title}</h3>
-              </div>
-              <h4 className="step-subtitle">{t.p3Sub}</h4>
-              <ul className="step-list">
-                <li>{t.p3L[0]}</li>
-                <li>{t.p3L[1]}</li>
-                <li>{t.p3L[2]}</li>
-                <li>{t.p3L[3]}</li>
-                <li>{t.p3L[4]}</li>
-                <li>{t.p3L[5]}</li>
-                <li>{t.p3L[6]}</li>
-                <li>{t.p3L[7]}</li>
-              </ul>
-            </StepCard>
-
-            <StepCard>
-              <div className="step-header">
-                <h3 className="step-title">{t.p4Title}</h3>
-              </div>
-              <h4 className="step-subtitle">{t.p4Sub}</h4>
-              <ul className="step-list">
-                <li>{t.p4L[0]}</li>
-                <li>{t.p4L[1]}</li>
-                <li>{t.p4L[2]}</li>
-                <li>{t.p4L[3]}</li>
-                <li>{t.p4L[4]}</li>
-                <li>{t.p4L[5]}</li>
-                <li>{t.p4L[6]}</li>
-                <li>{t.p4L[7]}</li>
-              </ul>
-              <QuoteCard style={{ marginTop: '24px', borderColor: theme.colors.red, padding: '24px' }}>
-                <p style={{ fontStyle: 'italic', fontSize: '1.25rem' }}>
-                  {t.p4Quote}
+        {/* PDF BANNER */}
+        <SectionContainer>
+          <AnimateOnScreen>
+            <div style={{
+              padding: '48px 40px',
+              borderRadius: '16px',
+              border: '1.5px solid #EA281E',
+              background: '#fff8f8',
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: '24px'
+            }}>
+              <div>
+                <span style={{ color: '#EA281E', fontSize: '0.875rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1.5px', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                  <Users size={18} color="#EA281E" />
+                  {lang === 'fr' ? 'ÉQUIPE PROJET DÉDIÉE' : 'DEDICATED PROJECT TEAM'}
+                </span>
+                <h3 style={{ margin: '0 0 8px', fontSize: '1.75rem', fontWeight: 900, textTransform: 'uppercase' }}>
+                  {lang === 'fr' ? 'Dossier de Compétences & Présentation' : 'Skills & Presentation Dossier'}
+                </h3>
+                <p style={{ margin: 0, opacity: 0.85, fontSize: '1.05rem', maxWidth: '600px' }}>
+                  {lang === 'fr'
+                    ? 'Découvrez les profils de nos experts, notre méthodologie de travail et notre engagement de qualité.'
+                    : 'Discover expert profiles, development methodology, and quality commitments.'}
                 </p>
-              </QuoteCard>
-            </StepCard>
-
-            <StepCard>
-              <div className="step-header">
-                <h3 className="step-title">{t.p5Title}</h3>
               </div>
-              <h4 className="step-subtitle">{t.p5Sub}</h4>
-              <ul className="step-list">
-                <li>{t.p5L[0]}</li>
-                <li>{t.p5L[1]}</li>
-                <li>{t.p5L[2]}</li>
-                <li>{t.p5L[3]}</li>
-                <li>{t.p5L[4]}</li>
-                <li>{t.p5L[5]}</li>
-              </ul>
-            </StepCard>
-
-            <StepCard>
-              <div className="step-header">
-                <h3 className="step-title">{t.p6Title}</h3>
-              </div>
-              <h4 className="step-subtitle">{t.p6Sub}</h4>
-              <ul className="step-list">
-                <li>{t.p6L[0]}</li>
-                <li>{t.p6L[1]}</li>
-                <li>{t.p6L[2]}</li>
-                <li>{t.p6L[3]}</li>
-                <li>{t.p6L[4]}</li>
-                <li>{t.p6L[5]}</li>
-                <li>{t.p6L[6]}</li>
-              </ul>
-            </StepCard>
-
-            <StepCard>
-              <div className="step-header">
-                <h3 className="step-title">{t.p7Title}</h3>
-              </div>
-              <h4 className="step-subtitle">{t.p7Sub}</h4>
-              <ul className="step-list">
-                <li>{t.p7L[0]}</li>
-                <li>{t.p7L[1]}</li>
-                <li>{t.p7L[2]}</li>
-                <li>{t.p7L[3]}</li>
-                <li>{t.p7L[4]}</li>
-                <li>{t.p7L[5]}</li>
-                <li>{t.p7L[6]}</li>
-              </ul>
-            </StepCard>
-
+              <PdfViewerModal
+                pdfUrl="/docs/presentation-crafti.pdf"
+                title={lang === 'fr' ? 'Dossier de Présentation CRAFTI' : 'CRAFTI Presentation Dossier'}
+                buttonText={lang === 'fr' ? 'Consulter le PDF' : 'View PDF'}
+              />
+            </div>
           </AnimateOnScreen>
         </SectionContainer>
 

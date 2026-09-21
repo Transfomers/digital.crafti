@@ -10,6 +10,16 @@ import AnimateOnScreen from '../../components/AnimateOnScreen';
 import { useLanguage } from '../../context/language';
 import { translations } from '../../locales/feuille-de-route';
 import routes, { methodologyRoutes } from '../../utils/constants/routes';
+import PdfViewerModal from '../../components/PdfViewer';
+import {
+  Calendar,
+  Rocket,
+  Layers,
+  CheckCircle,
+  FilePdf,
+  Target,
+  Zap,
+} from '../../components/Icons/ProjectIcons';
 
 // ================= STYLES ================= //
 
@@ -281,6 +291,13 @@ const RoadmapPage = () => {
             <HeroLead>
               {t.heroLead.split('dépendances').map((part, i, arr) => i < arr.length - 1 ? <React.Fragment key={i}>{part}<strong>dépendances</strong></React.Fragment> : part)}
             </HeroLead>
+            <div style={{ marginTop: '36px' }}>
+              <PdfViewerModal
+                pdfUrl="/docs/presentation-crafti.pdf"
+                title={lang === 'fr' ? 'Feuille de Route & Planning Prévisionnel' : 'Roadmap & Provisional Timeline'}
+                buttonText={lang === 'fr' ? 'Consulter la Feuille de Route (PDF)' : 'View Roadmap (PDF)'}
+              />
+            </div>
           </AnimateOnScreen>
         </HeroSection>
         
@@ -294,6 +311,7 @@ const RoadmapPage = () => {
             <StepCard>
               <div className="step-header">
                 <span className="step-num">{t.p1Num}</span>
+                <Calendar size={24} color="#EA281E" style={{ marginLeft: '10px', marginRight: '6px' }} />
                 <h3 className="step-title">{t.p1Title}</h3>
               </div>
               <h4 className="step-subtitle">{t.p1Sub}</h4>
@@ -312,6 +330,7 @@ const RoadmapPage = () => {
             <StepCard>
               <div className="step-header">
                 <span className="step-num">{t.p2Num}</span>
+                <Layers size={24} color="#EA281E" style={{ marginLeft: '10px', marginRight: '6px' }} />
                 <h3 className="step-title">{t.p2Title}</h3>
               </div>
               <h4 className="step-subtitle">{t.p2Sub}</h4>
@@ -329,6 +348,7 @@ const RoadmapPage = () => {
             <StepCard>
               <div className="step-header">
                 <span className="step-num">{t.p3Num}</span>
+                <Zap size={24} color="#EA281E" style={{ marginLeft: '10px', marginRight: '6px' }} />
                 <h3 className="step-title">{t.p3Title}</h3>
               </div>
               <h4 className="step-subtitle">{t.p3Sub}</h4>
@@ -346,6 +366,7 @@ const RoadmapPage = () => {
             <StepCard>
               <div className="step-header">
                 <span className="step-num">{t.p4Num}</span>
+                <Rocket size={24} color="#EA281E" style={{ marginLeft: '10px', marginRight: '6px' }} />
                 <h3 className="step-title">{t.p4Title}</h3>
               </div>
               <h4 className="step-subtitle">{t.p4Sub}</h4>
@@ -447,6 +468,43 @@ const RoadmapPage = () => {
               <span className="sep">↓</span>
               <span className="node">{t.n5}</span>
             </FlowChain>
+          </AnimateOnScreen>
+        </SectionContainer>
+
+        {/* PDF BANNER */}
+        <SectionContainer>
+          <AnimateOnScreen>
+            <div style={{
+              padding: '48px 40px',
+              borderRadius: '16px',
+              border: '1.5px solid #EA281E',
+              background: '#fff8f8',
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: '24px'
+            }}>
+              <div>
+                <span style={{ color: '#EA281E', fontSize: '0.875rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1.5px', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                  <FilePdf size={18} color="#EA281E" />
+                  {lang === 'fr' ? 'PLANNING STRATÉGIQUE' : 'STRATEGIC TIMELINE'}
+                </span>
+                <h3 style={{ margin: '0 0 8px', fontSize: '1.75rem', fontWeight: 900, textTransform: 'uppercase' }}>
+                  {lang === 'fr' ? 'Dossier Calendrier & Jalons' : 'Timeline & Milestones Dossier'}
+                </h3>
+                <p style={{ margin: 0, opacity: 0.85, fontSize: '1.05rem', maxWidth: '600px' }}>
+                  {lang === 'fr'
+                    ? 'Découvrez les jalons de livraison, les points de contrôle et les livrables associés à chaque sprint.'
+                    : 'Discover delivery milestones, checkpoints, and deliverables associated with each sprint.'}
+                </p>
+              </div>
+              <PdfViewerModal
+                pdfUrl="/docs/presentation-crafti.pdf"
+                title={lang === 'fr' ? 'Feuille de Route CRAFTI' : 'CRAFTI Roadmap'}
+                buttonText={lang === 'fr' ? 'Consulter le PDF' : 'View PDF'}
+              />
+            </div>
           </AnimateOnScreen>
         </SectionContainer>
 

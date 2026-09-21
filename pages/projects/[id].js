@@ -13,6 +13,20 @@ import useStyledTheme from '../../hooks/useStyledTheme';
 import AnimateOnScreen from '../../components/AnimateOnScreen';
 import Arrow from '../../components/Icons/Arrow';
 import routes, { methodologyRoutes } from '../../utils/constants/routes';
+import PdfViewerModal from '../../components/PdfViewer';
+import {
+  Compass,
+  Layers,
+  Server,
+  Sparkles,
+  Database,
+  GitBranch,
+  CheckCircle,
+  Rocket,
+  Users,
+  Shield,
+  FilePdf,
+} from '../../components/Icons/ProjectIcons';
 
 // ================= STYLES ================= //
 
@@ -474,6 +488,13 @@ const ProjectPage = () => {
             <HeroLead>
               {t.heroLead}
             </HeroLead>
+            <div style={{ marginTop: '36px' }}>
+              <PdfViewerModal
+                pdfUrl="/docs/presentation-crafti.pdf"
+                title={lang === 'fr' ? 'Dossier Méthodologique & Technique CRAFTI' : 'CRAFTI Technical & Methodological Dossier'}
+                buttonText={lang === 'fr' ? 'Consulter le Dossier PDF' : 'View Full PDF Dossier'}
+              />
+            </div>
           </AnimateOnScreen>
         </HeroSection>
 
@@ -516,21 +537,30 @@ const ProjectPage = () => {
             
             <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
               <StepCard style={{ padding: '32px' }}>
-                <h3 style={{ fontSize: '1.5rem', marginBottom: '16px', color: theme.colors.red }}>{t.archPeopleTitle}</h3>
+                <h3 style={{ fontSize: '1.5rem', marginBottom: '16px', color: theme.colors.red, display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <Users size={26} color="#EA281E" />
+                  <span>{t.archPeopleTitle}</span>
+                </h3>
                 <p style={{ fontSize: '1.15rem', opacity: 0.9 }}>
                   {t.archPeopleText}
                 </p>
               </StepCard>
 
               <StepCard style={{ padding: '32px' }}>
-                <h3 style={{ fontSize: '1.5rem', marginBottom: '16px', color: theme.colors.red }}>{t.archManagementTitle}</h3>
+                <h3 style={{ fontSize: '1.5rem', marginBottom: '16px', color: theme.colors.red, display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <Shield size={26} color="#EA281E" />
+                  <span>{t.archManagementTitle}</span>
+                </h3>
                 <p style={{ fontSize: '1.15rem', opacity: 0.9 }}>
                   {t.archManagementText}
                 </p>
               </StepCard>
 
               <StepCard style={{ padding: '32px', background: theme.name === 'light' ? '#eee' : '#111' }}>
-                <h3 style={{ fontSize: '1.5rem', marginBottom: '16px', color: theme.text }}>{t.archInfraTitle}</h3>
+                <h3 style={{ fontSize: '1.5rem', marginBottom: '16px', color: theme.text, display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <Server size={26} color={theme.text} />
+                  <span>{t.archInfraTitle}</span>
+                </h3>
                 <p style={{ fontSize: '1.15rem', opacity: 0.9 }}>
                   {t.archInfraText}
                 </p>
@@ -603,34 +633,42 @@ const ProjectPage = () => {
 
             <PillarsGrid>
               <PillarCard>
+                <div style={{ color: '#EA281E', marginBottom: '12px' }}><Compass size={28} /></div>
                 <h3>STRATÉGIE</h3>
                 <p>{t.p1}</p>
               </PillarCard>
               <PillarCard>
+                <div style={{ color: '#EA281E', marginBottom: '12px' }}><Layers size={28} /></div>
                 <h3>UX / UI</h3>
                 <p>{t.p2}</p>
               </PillarCard>
               <PillarCard>
+                <div style={{ color: '#EA281E', marginBottom: '12px' }}><Server size={28} /></div>
                 <h3>TECHNOLOGIE</h3>
                 <p>{t.p3}</p>
               </PillarCard>
               <PillarCard>
+                <div style={{ color: '#EA281E', marginBottom: '12px' }}><Sparkles size={28} /></div>
                 <h3>IA</h3>
                 <p>{t.p4}</p>
               </PillarCard>
               <PillarCard>
+                <div style={{ color: '#EA281E', marginBottom: '12px' }}><Database size={28} /></div>
                 <h3>DONNÉES</h3>
                 <p>{t.p5}</p>
               </PillarCard>
               <PillarCard>
+                <div style={{ color: '#EA281E', marginBottom: '12px' }}><GitBranch size={28} /></div>
                 <h3>INTÉGRATION</h3>
                 <p>{t.p6}</p>
               </PillarCard>
               <PillarCard>
+                <div style={{ color: '#EA281E', marginBottom: '12px' }}><CheckCircle size={28} /></div>
                 <h3>QUALITÉ</h3>
                 <p>{t.p7}</p>
               </PillarCard>
               <PillarCard>
+                <div style={{ color: '#EA281E', marginBottom: '12px' }}><Rocket size={28} /></div>
                 <h3>ÉVOLUTION</h3>
                 <p>{t.p8}</p>
               </PillarCard>
@@ -702,6 +740,43 @@ const ProjectPage = () => {
                 {t.studioTags}
               </div>
             </StudioIdentity>
+          </AnimateOnScreen>
+        </SectionContainer>
+
+        {/* PDF BANNER */}
+        <SectionContainer>
+          <AnimateOnScreen>
+            <div style={{
+              padding: '48px 40px',
+              borderRadius: '16px',
+              border: `1.5px solid ${theme.colors.red}`,
+              background: theme.name === 'light' ? '#fff8f8' : 'rgba(234,40,30,0.06)',
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: '24px'
+            }}>
+              <div>
+                <span style={{ color: '#EA281E', fontSize: '0.875rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1.5px', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                  <FilePdf size={18} color="#EA281E" />
+                  {lang === 'fr' ? 'DOCUMENTATION OFFICIELLE' : 'OFFICIAL DOCUMENTATION'}
+                </span>
+                <h3 style={{ margin: '0 0 8px', fontSize: '1.75rem', fontWeight: 900, textTransform: 'uppercase' }}>
+                  {lang === 'fr' ? 'Dossier de Présentation & Spécifications' : 'Presentation & Specifications Dossier'}
+                </h3>
+                <p style={{ margin: 0, opacity: 0.85, fontSize: '1.05rem', maxWidth: '600px' }}>
+                  {lang === 'fr'
+                    ? 'Consultez en ligne ou téléchargez le document complet avec architecture, livrables et détails d’exécution.'
+                    : 'View online or download the full document with architecture, deliverables, and execution details.'}
+                </p>
+              </div>
+              <PdfViewerModal
+                pdfUrl="/docs/presentation-crafti.pdf"
+                title={lang === 'fr' ? 'Dossier Méthodologique CRAFTI' : 'CRAFTI Methodological Dossier'}
+                buttonText={lang === 'fr' ? 'Ouvrir le PDF' : 'Open PDF Dossier'}
+              />
+            </div>
           </AnimateOnScreen>
         </SectionContainer>
 

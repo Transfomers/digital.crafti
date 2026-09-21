@@ -11,6 +11,19 @@ import AnimateOnScreen from '../../components/AnimateOnScreen';
 import { useLanguage } from '../../context/language';
 import { translations } from '../../locales/notre-methode';
 import routes, { methodologyRoutes } from '../../utils/constants/routes';
+import PdfViewerModal from '../../components/PdfViewer';
+import {
+  Compass,
+  Search,
+  Layers,
+  Server,
+  Zap,
+  GitBranch,
+  CheckCircle,
+  Rocket,
+  Activity,
+  FilePdf,
+} from '../../components/Icons/ProjectIcons';
 
 // ================= STYLES ================= //
 
@@ -413,6 +426,13 @@ const OurMethodPage = () => {
                 {t.quote}
               </p>
             </QuoteCard>
+            <div style={{ marginTop: '36px' }}>
+              <PdfViewerModal
+                pdfUrl="/docs/presentation-crafti.pdf"
+                title={lang === 'fr' ? 'Méthodologie & Cycle de Vie du Projet' : 'Methodology & Project Lifecycle Dossier'}
+                buttonText={lang === 'fr' ? 'Consulter le Manuel Méthodologique (PDF)' : 'View Methodology Handbook (PDF)'}
+              />
+            </div>
           </AnimateOnScreen>
         </HeroSection>
 
@@ -428,6 +448,7 @@ const OurMethodPage = () => {
             <StepCard>
               <div className="step-header">
                 <span className="step-num">{t.step1Num}</span>
+                <Compass size={24} color="#EA281E" style={{ marginLeft: '10px', marginRight: '6px' }} />
                 <h3 className="step-title">{t.step1Title}</h3>
               </div>
               <h4 className="step-subtitle">{t.step1Subtitle}</h4>
@@ -445,6 +466,7 @@ const OurMethodPage = () => {
                 <li>Parcours utilisateurs principaux, de la découverte à l'action</li>
               </ul>
               <div className="output-badge">
+                <FilePdf size={16} color="#EA281E" style={{ verticalAlign: 'middle', marginRight: '8px' }} />
                 LIVRABLE : Rapport de Découverte + Définition des Exigences + Cartographie Utilisateurs & Informations
               </div>
             </StepCard>
@@ -453,6 +475,7 @@ const OurMethodPage = () => {
             <StepCard>
               <div className="step-header">
                 <span className="step-num">{t.step2Num}</span>
+                <Search size={24} color="#EA281E" style={{ marginLeft: '10px', marginRight: '6px' }} />
                 <h3 className="step-title">DÉFINIR</h3>
               </div>
               <h4 className="step-subtitle">Transformer les besoins en structure de produit.</h4>
@@ -470,6 +493,7 @@ const OurMethodPage = () => {
                 <li><strong>Priorités :</strong> Qu'est-ce qui est essentiel pour la première version ?</li>
               </ul>
               <div className="output-badge">
+                <FilePdf size={16} color="#EA281E" style={{ verticalAlign: 'middle', marginRight: '8px' }} />
                 LIVRABLE : Spécifications Fonctionnelles + Parcours Utilisateurs + Priorités Produit
               </div>
             </StepCard>
@@ -478,6 +502,7 @@ const OurMethodPage = () => {
             <StepCard>
               <div className="step-header">
                 <span className="step-num">{t.step3Num}</span>
+                <Layers size={24} color="#EA281E" style={{ marginLeft: '10px', marginRight: '6px' }} />
                 <h3 className="step-title">EXPÉRIENCE & UI/UX</h3>
               </div>
               <h4 className="step-subtitle">Concevoir l'expérience avant de la développer.</h4>
@@ -500,6 +525,7 @@ const OurMethodPage = () => {
                 <span className="node">SUIVRE</span>
               </FlowChain>
               <div className="output-badge">
+                <FilePdf size={16} color="#EA281E" style={{ verticalAlign: 'middle', marginRight: '8px' }} />
                 LIVRABLE : Direction UX/UI validée + prototypes + système de conception
               </div>
             </StepCard>
@@ -508,6 +534,7 @@ const OurMethodPage = () => {
             <StepCard>
               <div className="step-header">
                 <span className="step-num">{t.step4Num}</span>
+                <Server size={24} color="#EA281E" style={{ marginLeft: '10px', marginRight: '6px' }} />
                 <h3 className="step-title">ARCHITECTURE</h3>
               </div>
               <h4 className="step-subtitle">Construire une fondation pour de multiples expériences.</h4>
@@ -515,6 +542,7 @@ const OurMethodPage = () => {
                 La plateforme Web et l'application mobile partagent une base technique cohérente avec des services backend partagés, des APIs, une architecture de base de données, une authentification, des rôles/permissions, des formulaires, des services d'IA et une sécurité.
               </p>
               <div className="output-badge">
+                <FilePdf size={16} color="#EA281E" style={{ verticalAlign: 'middle', marginRight: '8px' }} />
                 LIVRABLE : Architecture Technique + Modèle de Données + Stratégie d'Intégration + Approche Sécuritaire
               </div>
             </StepCard>
@@ -523,6 +551,7 @@ const OurMethodPage = () => {
             <StepCard>
               <div className="step-header">
                 <span className="step-num">{t.step5Num}</span>
+                <Zap size={24} color="#EA281E" style={{ marginLeft: '10px', marginRight: '6px' }} />
                 <h3 className="step-title">DÉVELOPPEMENT</h3>
               </div>
               <h4 className="step-subtitle">Développer en incréments structurés.</h4>
@@ -530,6 +559,7 @@ const OurMethodPage = () => {
                 Le développement est organisé autour de modules fonctionnels (portail Web, application mobile, base de données/formulaires, chatbot IA et intégrations API) en incréments de travail continus.
               </p>
               <div className="output-badge">
+                <FilePdf size={16} color="#EA281E" style={{ verticalAlign: 'middle', marginRight: '8px' }} />
                 LIVRABLE : Incréments de produit fonctionnels progressivement intégrés dans l'écosystème
               </div>
             </StepCard>
@@ -538,6 +568,7 @@ const OurMethodPage = () => {
             <StepCard>
               <div className="step-header">
                 <span className="step-num">ÉTAPE 06</span>
+                <GitBranch size={24} color="#EA281E" style={{ marginLeft: '10px', marginRight: '6px' }} />
                 <h3 className="step-title">INTÉGRATION</h3>
               </div>
               <h4 className="step-subtitle">Faire fonctionner les pièces ensemble.</h4>
@@ -545,6 +576,7 @@ const OurMethodPage = () => {
                 Nous validons Web ↔ API, Mobile ↔ API, Formulaires ↔ Base de données, Chatbot ↔ Information, Utilisateurs ↔ Communautés, et Interactions ↔ Suivi afin que l'information soutienne la prochaine action réelle.
               </p>
               <div className="output-badge">
+                <FilePdf size={16} color="#EA281E" style={{ verticalAlign: 'middle', marginRight: '8px' }} />
                 LIVRABLE : Écosystème numérique connecté et intégré
               </div>
             </StepCard>
@@ -553,6 +585,7 @@ const OurMethodPage = () => {
             <StepCard>
               <div className="step-header">
                 <span className="step-num">ÉTAPE 07</span>
+                <CheckCircle size={24} color="#EA281E" style={{ marginLeft: '10px', marginRight: '6px' }} />
                 <h3 className="step-title">TEST</h3>
               </div>
               <h4 className="step-subtitle">Le construire. Le défier. L'améliorer.</h4>
@@ -560,6 +593,7 @@ const OurMethodPage = () => {
                 Tests continus des exigences fonctionnelles, des parcours utilisateurs, de la validation des données, de l'authentification, des permissions, des comportements responsives, des performances, de la sécurité et de la validation de l'EMUC.
               </p>
               <div className="output-badge">
+                <FilePdf size={16} color="#EA281E" style={{ verticalAlign: 'middle', marginRight: '8px' }} />
                 LIVRABLE : Solution validée, corrigée et prête à être lancée
               </div>
             </StepCard>
@@ -568,6 +602,7 @@ const OurMethodPage = () => {
             <StepCard>
               <div className="step-header">
                 <span className="step-num">ÉTAPE 08</span>
+                <Rocket size={24} color="#EA281E" style={{ marginLeft: '10px', marginRight: '6px' }} />
                 <h3 className="step-title">DÉPLOIEMENT & TRANSFERT</h3>
               </div>
               <h4 className="step-subtitle">Un lancement réussi inclut les personnes qui utilisent le système.</h4>
@@ -575,6 +610,7 @@ const OurMethodPage = () => {
                 Déploiement en production (hébergement, SSL, bases de données, packaging pour les app-stores) combiné avec une documentation complète, un accès administratif, des directives opérationnelles et un transfert technique.
               </p>
               <div className="output-badge">
+                <FilePdf size={16} color="#EA281E" style={{ verticalAlign: 'middle', marginRight: '8px' }} />
                 LIVRABLE : Déploiement opérationnel + documentation complète & transfert de formation
               </div>
             </StepCard>
@@ -583,6 +619,7 @@ const OurMethodPage = () => {
             <StepCard>
               <div className="step-header">
                 <span className="step-num">ÉTAPE 09</span>
+                <Activity size={24} color="#EA281E" style={{ marginLeft: '10px', marginRight: '6px' }} />
                 <h3 className="step-title">SUPPORT & ÉVOLUTION</h3>
               </div>
               <h4 className="step-subtitle">Le lancement est le début du cycle de vie du produit.</h4>
@@ -590,6 +627,7 @@ const OurMethodPage = () => {
                 Maintenance continue, mises à jour de sécurité, surveillance, améliorations des performances et évolution des capacités futures sans avoir à reconstruire les fondations.
               </p>
               <div className="output-badge">
+                <FilePdf size={16} color="#EA281E" style={{ verticalAlign: 'middle', marginRight: '8px' }} />
                 LIVRABLE : Croissance à long terme durable et stabilité technique
               </div>
             </StepCard>
@@ -775,6 +813,43 @@ const OurMethodPage = () => {
                 <div>{t.diffQ6}</div>
               </div>
             </DifferenceCard>
+          </AnimateOnScreen>
+        </SectionContainer>
+
+        {/* PDF BANNER */}
+        <SectionContainer>
+          <AnimateOnScreen>
+            <div style={{
+              padding: '48px 40px',
+              borderRadius: '16px',
+              border: '1.5px solid #EA281E',
+              background: theme.name === 'light' ? '#fff8f8' : 'rgba(234,40,30,0.06)',
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: '24px'
+            }}>
+              <div>
+                <span style={{ color: '#EA281E', fontSize: '0.875rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1.5px', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                  <FilePdf size={18} color="#EA281E" />
+                  {lang === 'fr' ? 'DOSSIER MÉTHODOLOGIQUE COMPLET' : 'FULL METHODOLOGY DOSSIER'}
+                </span>
+                <h3 style={{ margin: '0 0 8px', fontSize: '1.75rem', fontWeight: 900, textTransform: 'uppercase' }}>
+                  {lang === 'fr' ? 'Télécharger la Méthodologie Crafti' : 'Download the Crafti Methodology'}
+                </h3>
+                <p style={{ margin: 0, opacity: 0.85, fontSize: '1.05rem', maxWidth: '600px' }}>
+                  {lang === 'fr'
+                    ? 'Le guide complet décrivant les 9 étapes du projet, les protocoles de validation et la matrice des livrables.'
+                    : 'The complete guide describing the 9 project stages, validation protocols, and deliverables matrix.'}
+                </p>
+              </div>
+              <PdfViewerModal
+                pdfUrl="/docs/presentation-crafti.pdf"
+                title={lang === 'fr' ? 'Manuel Méthodologique CRAFTI' : 'CRAFTI Methodology Handbook'}
+                buttonText={lang === 'fr' ? 'Consulter le PDF' : 'View PDF'}
+              />
+            </div>
           </AnimateOnScreen>
         </SectionContainer>
 

@@ -10,6 +10,16 @@ import AnimateOnScreen from '../../components/AnimateOnScreen';
 import { useLanguage } from '../../context/language';
 import { translations } from '../../locales/gouvernance';
 import routes, { methodologyRoutes } from '../../utils/constants/routes';
+import PdfViewerModal from '../../components/PdfViewer';
+import {
+  Shield,
+  Users,
+  CheckCircle,
+  FilePdf,
+  Award,
+  Activity,
+  Target,
+} from '../../components/Icons/ProjectIcons';
 
 // ================= STYLES ================= //
 
@@ -282,6 +292,13 @@ const GovernancePage = () => {
             <HeroLead>
               {t.heroLead}
             </HeroLead>
+            <div style={{ marginTop: '36px' }}>
+              <PdfViewerModal
+                pdfUrl="/docs/presentation-crafti.pdf"
+                title={lang === 'fr' ? 'Cadre de Gouvernance & Rôles Projet' : 'Governance Framework & Roles'}
+                buttonText={lang === 'fr' ? 'Consulter le Cadre de Gouvernance (PDF)' : 'View Governance Framework (PDF)'}
+              />
+            </div>
           </AnimateOnScreen>
         </HeroSection>
         
@@ -295,6 +312,7 @@ const GovernancePage = () => {
             <StepCard>
               <div className="step-header">
                 <span className="step-num">01</span>
+                <Users size={24} color="#EA281E" style={{ marginLeft: '10px', marginRight: '6px' }} />
                 <h3 className="step-title">{t.p1Title}</h3>
               </div>
               <h4 className="step-subtitle">{t.p1Sub}</h4>
@@ -309,6 +327,7 @@ const GovernancePage = () => {
             <StepCard>
               <div className="step-header">
                 <span className="step-num">02</span>
+                <Shield size={24} color="#EA281E" style={{ marginLeft: '10px', marginRight: '6px' }} />
                 <h3 className="step-title">{t.p2Title}</h3>
               </div>
               <h4 className="step-subtitle">{t.p2Sub}</h4>
@@ -323,6 +342,7 @@ const GovernancePage = () => {
             <StepCard>
               <div className="step-header">
                 <span className="step-num">03</span>
+                <Target size={24} color="#EA281E" style={{ marginLeft: '10px', marginRight: '6px' }} />
                 <h3 className="step-title">{t.p3Title}</h3>
               </div>
               <h4 className="step-subtitle">{t.p3Sub}</h4>
@@ -359,6 +379,43 @@ const GovernancePage = () => {
             <p style={{ marginTop: '24px', fontSize: '1.25rem', textAlign: 'center', opacity: 0.85 }}>
               {t.s2Desc}
             </p>
+          </AnimateOnScreen>
+        </SectionContainer>
+
+        {/* PDF BANNER */}
+        <SectionContainer>
+          <AnimateOnScreen>
+            <div style={{
+              padding: '48px 40px',
+              borderRadius: '16px',
+              border: '1.5px solid #EA281E',
+              background: '#fff8f8',
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: '24px'
+            }}>
+              <div>
+                <span style={{ color: '#EA281E', fontSize: '0.875rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1.5px', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                  <FilePdf size={18} color="#EA281E" />
+                  {lang === 'fr' ? 'CHARTE DE GOUVERNANCE' : 'GOVERNANCE CHARTER'}
+                </span>
+                <h3 style={{ margin: '0 0 8px', fontSize: '1.75rem', fontWeight: 900, textTransform: 'uppercase' }}>
+                  {lang === 'fr' ? 'Matrice RACI & Rôles Décisionnels' : 'RACI Matrix & Decision Roles'}
+                </h3>
+                <p style={{ margin: 0, opacity: 0.85, fontSize: '1.05rem', maxWidth: '600px' }}>
+                  {lang === 'fr'
+                    ? 'Découvrez les règles d’arbitrage, les circuits d’approbation et la composition des comités de pilotage.'
+                    : 'Discover arbitration rules, approval circuits, and steering committee composition.'}
+                </p>
+              </div>
+              <PdfViewerModal
+                pdfUrl="/docs/presentation-crafti.pdf"
+                title={lang === 'fr' ? 'Charte de Gouvernance CRAFTI' : 'CRAFTI Governance Charter'}
+                buttonText={lang === 'fr' ? 'Consulter le PDF' : 'View PDF'}
+              />
+            </div>
           </AnimateOnScreen>
         </SectionContainer>
 
