@@ -33,6 +33,8 @@ const Row = styled.div`
 `;
 
 export const Header = styled(Row)`
+  padding: 32px 0 16px;
+
   & h3 {
     margin: -20px;
     margin-left: 0;
@@ -40,7 +42,7 @@ export const Header = styled(Row)`
   }
 
   ${({ theme }) => theme.breakpoints.tablet`
-    padding: 24px 0;
+    padding: 20px 0 12px;
 
     & h3 {
       font-size: 1rem;
@@ -50,7 +52,7 @@ export const Header = styled(Row)`
   `};
 
   ${({ theme }) => theme.breakpoints.small`
-    padding: 16px 0;
+    padding: 16px 0 10px;
     flex-wrap: wrap;
     gap: 12px;
   `};
@@ -59,6 +61,7 @@ export const Header = styled(Row)`
 export const Footer = styled(Row)`
   justify-content: flex-start;
   align-items: flex-start;
+  padding: 24px 0 32px;
 
   ${({ theme }) => theme.breakpoints.small`
     position: relative;
@@ -142,53 +145,71 @@ export const SocialMedia = styled(DefaultSocialMedia)`
 `;
 
 export const Navigation = styled.nav`
+  width: 100%;
   height: auto;
-  margin: 16px 0 28px;
+  margin: 12px 0 20px;
 `;
 
 export const List = styled(motion.ul)`
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 
   & li {
     display: block;
-    overflow: hidden;
-    float: left;
-    clear: left;
+    width: 100%;
   }
 `;
 
 export const Link = styled(motion.a)`
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  font-size: 2.35rem;
-  line-height: 1.45;
+  gap: 10px;
+  font-size: 2.1rem;
+  line-height: 1.35;
   font-weight: 900;
   text-transform: uppercase;
-  will-change: transform;
+  color: ${({ theme }) => theme.background};
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    opacity: 0.9;
+    transform: translateX(8px);
+  }
 
   ${({ theme }) => theme.breakpoints.tablet`
-    font-size: 1.6rem;
-    line-height: 1.5;
+    font-size: 1.45rem;
+    line-height: 1.35;
   `};
 
   ${({ theme }) => theme.breakpoints.small`
-    font-size: 1.25rem;
-    line-height: 1.5;
+    font-size: 1.15rem;
+    line-height: 1.4;
   `};
 `;
 
 export const ArrowContainer = styled.span`
-  display: block;
-  overflow: hidden;
-  width: 48px;
-  height: 38px;
-  padding-right: 6px;
-  margin-right: 6px;
+  display: inline-flex;
+  align-items: center;
+  width: 22px;
+  height: 16px;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
 
   & svg {
-    float: right;
-    width: 70px;
-    height: 38px;
+    width: 100%;
+    height: 100%;
+  }
+
+  ${Link}:hover & {
+    opacity: 1;
+    transform: translateX(0);
   }
 
   ${({ theme }) => theme.breakpoints.small`

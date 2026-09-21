@@ -1,15 +1,15 @@
 export const listVariants = {
   show: {
     transition: {
-      delayChildren: 0.5,
-      staggerChildren: 0.1,
+      delayChildren: 0.15,
+      staggerChildren: 0.04,
     },
   },
 };
 
 export const listItemsVariants = {
   hidden: {
-    x: -100,
+    x: -25,
     opacity: 0,
   },
   show: {
@@ -19,12 +19,8 @@ export const listItemsVariants = {
 };
 
 export const linkVariants = {
-  initial: ({ isMobile }) => {
-    return isMobile ? { x: 0 } : { x: -54 };
-  },
-  hover: ({ isMobile, color }) => {
-    return isMobile ? { color } : { x: 0 };
-  },
+  initial: { x: 0 },
+  hover: { x: 0 },
 };
 
 export const videoRevealVariants = {

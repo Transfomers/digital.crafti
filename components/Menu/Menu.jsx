@@ -85,9 +85,9 @@ const Menu = () => {
   }, [resetCursorColor]);
 
   const handleHoverStart = React.useCallback(
-    event => {
+    routeId => {
       addCursorBorder();
-      setRevealVideo(event.target.name);
+      setRevealVideo(routeId);
     },
     [addCursorBorder],
   );
@@ -157,13 +157,8 @@ const Menu = () => {
                         key={`${route.id}_${isMobile}`}
                         name={route.id}
                         onClick={handleCloseMenu}
-                        onHoverStart={handleHoverStart}
-                        onHoverEnd={handleHoverEnd}
-                        custom={{ isMobile, color: theme.text }}
-                        initial="initial"
-                        whileHover="hover"
-                        variants={linkVariants}
-                        transition={transition}
+                        onMouseEnter={() => handleHoverStart(route.id)}
+                        onMouseLeave={handleHoverEnd}
                       >
                         <ArrowContainer>
                           <Arrow fillColor={theme.background} />
