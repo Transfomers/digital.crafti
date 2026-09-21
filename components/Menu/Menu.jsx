@@ -175,6 +175,61 @@ const Menu = () => {
                 ))}
               </List>
             </Navigation>
+            <div style={{ margin: '8px 0 24px', display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
+              <a
+                href="/docs/presentation-crafti.pdf"
+                download="Infrastructure_numerique_EMUC_Proposition_Crafti.pdf"
+                onClick={handleCloseMenu}
+                onMouseEnter={addCursorBorder}
+                onMouseLeave={removeCursorBorder}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '9px 20px',
+                  borderRadius: '9999px',
+                  border: `2px solid ${theme.background}`,
+                  color: theme.background,
+                  fontSize: '0.8125rem',
+                  fontWeight: 800,
+                  textTransform: 'uppercase',
+                  letterSpacing: '1px',
+                  textDecoration: 'none',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                }}
+              >
+                <span>↓</span>
+                <span>{lang === 'fr' ? 'Télécharger le Dossier EMUC (PDF • 42p)' : 'Download EMUC Dossier (PDF • 42p)'}</span>
+              </a>
+              <a
+                href="/docs/presentation-crafti.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={handleCloseMenu}
+                onMouseEnter={addCursorBorder}
+                onMouseLeave={removeCursorBorder}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '9px 20px',
+                  borderRadius: '9999px',
+                  background: theme.background,
+                  color: theme.colors.red,
+                  fontSize: '0.8125rem',
+                  fontWeight: 800,
+                  textTransform: 'uppercase',
+                  letterSpacing: '1px',
+                  textDecoration: 'none',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                }}
+              >
+                <span>👁</span>
+                <span>{lang === 'fr' ? 'Consulter le PDF' : 'View PDF'}</span>
+              </a>
+            </div>
             <Footer>
               <FooterBlock>
                 <FooterText
