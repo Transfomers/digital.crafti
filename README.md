@@ -41,6 +41,6 @@ npm run dev
 
 Released in 2020
 
-This project is under the [MIT license](https://github.com/rodrigogama/awwwards-rebuilt-furrow/blob/main/LICENSE).
+This project is under the [MIT license](./LICENSE) and uses [Crafti Studio](https://craftistudio.tech/our_studio) as a source.
 
 Made with 🖤 by crafti one
