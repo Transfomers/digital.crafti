@@ -47,6 +47,7 @@ export const Header = styled(Row)`
 
 export const Footer = styled(Row)`
   justify-content: flex-start;
+  align-items: flex-start;
 
   ${({ theme }) => theme.breakpoints.small`
     position: relative;
@@ -59,6 +60,17 @@ export const Footer = styled(Row)`
   `};
 `;
 
+export const FooterBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-right: 48px;
+
+  ${({ theme }) => theme.breakpoints.small`
+    margin-right: 0;
+    margin-bottom: 12px;
+  `};
+`;
+
 export const FooterText = styled.p`
   ${secondaryFontStyle};
   line-height: 24px;
@@ -67,7 +79,7 @@ export const FooterText = styled.p`
 
   &.link {
     display: inline-block;
-    margin-right: 64px;
+    margin-right: 0;
 
     &:hover {
       color: ${({ theme }) => theme.text};
@@ -77,6 +89,7 @@ export const FooterText = styled.p`
   &.copyright {
     font-size: 0.875rem;
     line-height: 1.0714285714;
+    align-self: flex-end;
   }
 
   ${({ theme }) => theme.breakpoints.small`

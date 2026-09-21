@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { ThemeContextProvider, useThemeContext } from '../context/theme';
 import { CursorContextProvider } from '../context/cursor';
 import { MenuContextProvider } from '../context/menu';
+import { LanguageProvider } from '../context/language';
 import GlobalStyles from '../styles/global';
 import darkTheme from '../styles/themes/dark';
 import lightTheme from '../styles/themes/light';
@@ -35,8 +36,10 @@ const App = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-        <title>Awwwards Rebuilt - Furrow Studio</title>
+        <title>Crafti</title>
         <link rel="icon" href="/favicon.png" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="stylesheet" href="https://use.typekit.net/yzi3byl.css" />
       </Head>
       <style jsx global>{`
@@ -61,13 +64,15 @@ const App = ({ Component, pageProps }) => {
       <ThemeContextProvider>
         <MenuContextProvider>
           <CursorContextProvider>
-            <ThemedApp>
-              <Header />
-              <Menu />
-              <Component {...pageProps} />
-              <Cursor />
-              <SiteOfTheDay />
-            </ThemedApp>
+            <LanguageProvider>
+              <ThemedApp>
+                <Header />
+                <Menu />
+                <Component {...pageProps} />
+                <Cursor />
+                <SiteOfTheDay />
+              </ThemedApp>
+            </LanguageProvider>
           </CursorContextProvider>
         </MenuContextProvider>
       </ThemeContextProvider>

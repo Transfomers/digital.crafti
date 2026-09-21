@@ -3,8 +3,14 @@ import { motion } from 'framer-motion';
 import useCursorStyle from '../../../hooks/useCursorStyle';
 import useWindowSize from '../../../hooks/useWindowSize';
 import useStyledTheme from '../../../hooks/useStyledTheme';
+import { useLanguage } from '../../../context/language';
 import CanvasEraser from '../../CanvasEraser';
-import { BannerSection, BannerTitle, VideoContainer } from './styles';
+import {
+  BannerSection,
+  BannerTitle,
+  BannerSubtitle,
+  VideoContainer,
+} from './styles';
 
 const titleAnimation = {
   animate: {
@@ -29,18 +35,21 @@ const Banner = () => {
   const canvasRef = React.useRef(null);
   const windowSize = useWindowSize();
   const theme = useStyledTheme();
+  const { lang } = useLanguage();
   const { addCursorBorder, removeCursorBorder } = useCursorStyle();
 
   return (
     <BannerSection style={{ height: windowSize.height }}>
       <VideoContainer>
         <video
-          src="/videos/banner.mp4"
+          src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Christ_Church_Cathedral_Dublin_video.webm"
           height="100%"
           width="100%"
           loop
           autoPlay
           muted
+          playsInline
+          style={{ filter: 'grayscale(100%) brightness(0.7)' }}
         />
       </VideoContainer>
       <CanvasEraser
@@ -52,13 +61,16 @@ const Banner = () => {
         onMouseEnter={addCursorBorder}
         onMouseLeave={removeCursorBorder}
       />
+      <BannerSubtitle>
+        {lang === 'fr' ? 'CRAFTI & l’EMUC.' : 'CRAFTI & EMUC.'}
+      </BannerSubtitle>
       <BannerTitle
         variants={titleAnimation}
         initial="initial"
         animate="animate"
       >
-        <motion.span variants={itemTitleAnimation}>DIG</motion.span>
-        <motion.span variants={itemTitleAnimation}>DEEP</motion.span>
+        <motion.span variants={itemTitleAnimation}>CRAFTI</motion.span>
+        <motion.span variants={itemTitleAnimation}>STUDIO</motion.span>
       </BannerTitle>
     </BannerSection>
   );

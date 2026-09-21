@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { motion, useAnimation } from 'framer-motion';
 import { useMenuContext } from '../../../context/menu';
+import { useLanguage } from '../../../context/language';
 import useCursorStyle from '../../../hooks/useCursorStyle';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import useStyledTheme from '../../../hooks/useStyledTheme';
@@ -25,6 +26,7 @@ const transition = {
 const FeaturedProject = () => {
   const controlsInfo = useAnimation();
   const controlsArrow = useAnimation();
+  const { lang } = useLanguage();
   const theme = useStyledTheme();
   const [{ isMenuOpen }] = useMenuContext();
   const {
@@ -75,31 +77,31 @@ const FeaturedProject = () => {
     <ContentSection>
       <AnimateOnScreen>
         <motion.div>
-          <Link href="/projects/not-humble" passHref>
+          <Link href="/projects/notre-approche" passHref>
             <ProjectAnchor
               onHoverStart={handleAnchorHoverStart}
               onHoverEnd={handleAnchorHoverEnd}
             >
               <ProjectInfo>
-                <h3>Featured Project</h3>
+                <h3>{lang === 'fr' ? 'Projet en Vedette' : 'Featured Project'}</h3>
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={controlsInfo}
                   transition={transition}
                   className="project-info"
                 >
-                  <h4>PEI Seafood</h4>
-                  <h4>2019</h4>
+                  <h4>CRAFTI × EMUC</h4>
+                  <h4>2026</h4>
                 </motion.div>
                 <ProjectTitle>
-                  NOT <br /> HUMBLE
+                  {lang === 'fr' ? 'NOTRE' : 'OUR'} <br /> {lang === 'fr' ? 'APPROCHE' : 'APPROACH'}
                   <span className="arrow">
                     <Arrow animate={controlsArrow} transition={transition} />
                   </span>
                 </ProjectTitle>
               </ProjectInfo>
               <VideoPreview>
-                <video loop autoPlay muted src="videos/featured-video.mp4" />
+                <video loop autoPlay muted src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Christ_Church_Cathedral_Dublin_video.webm" style={{ filter: 'grayscale(100%) brightness(0.7)' }} />
               </VideoPreview>
             </ProjectAnchor>
           </Link>
@@ -109,7 +111,7 @@ const FeaturedProject = () => {
         <MenuContainer>
           <MenuButton
             sticky={false}
-            title="All Projects"
+            title={lang === 'fr' ? 'Tous les Projets' : 'All Projects'}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           />

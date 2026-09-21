@@ -1,51 +1,32 @@
-export default [
-  [
-    'Pre-Production',
+const services = {
+  fr: [
     [
-      'Creative Development',
-      'Writing',
-      'Creative Development',
-      'Writing',
-      'Storyboards',
-      'Art Direction',
-      'Creative Direction',
-      'Location Scouting',
-      'Casting',
+      'Stratégie & Design',
+      ['Découverte', 'UX / UI', 'Stratégie Numérique', 'Architecture'],
+    ],
+    [
+      'Technologie',
+      ['Plateformes Web', 'Applications Mobiles', 'SaaS & Logiciels', 'APIs & Intégrations'],
+    ],
+    [
+      'IA & Communication',
+      ['IA & Chatbots', 'Automatisation', 'Communication Numérique', 'Contenu & Présence Numérique'],
     ],
   ],
-  [
-    'Video Production',
+  en: [
     [
-      'Principle Photography',
-      'Production Management',
-      'Crew',
-      'Dailies',
-      'LTO-Archiving',
+      'Strategy & Design',
+      ['Discovery', 'UX / UI', 'Digital Strategy', 'Architecture'],
+    ],
+    [
+      'Technology',
+      ['Web Platforms', 'Mobile Apps', 'SaaS & Software', 'APIs & Integrations'],
+    ],
+    [
+      'AI & Communication',
+      ['AI & Chatbots', 'Automation', 'Digital Communication', 'Content & Digital Presence'],
     ],
   ],
-  [
-    'Post-Production',
-    [
-      'Colour correction',
-      'Offline editing',
-      'Online editing',
-      'VFX',
-      'Animation and motion graphics',
-      'Closed captioning and subtitles',
-      'Descriptive video',
-      'Dailies',
-      'Quality control',
-      'LTO Archiving',
-    ],
-  ],
-  [
-    'Audio Post-Production',
-    [
-      'We work with some amazing partners who provide:',
-      'Sound Design',
-      'SFX',
-      'Music',
-      'Sound Mix',
-    ],
-  ],
-];
+};
+
+export default services;

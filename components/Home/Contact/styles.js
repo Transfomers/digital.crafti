@@ -28,6 +28,16 @@ export const ContactSection = styled(motion.section)`
     }
   }
 
+  & .contact-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 14px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
   & .contact-text {
     ${secondaryFontStyle};
     line-height: 28px;

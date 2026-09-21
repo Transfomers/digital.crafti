@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Logo from '../Icons/Logo';
 import MenuButton from '../MenuButton';
+import { useLanguage } from '../../context/language';
 import { Slider, Container, StyledLink, MenuWrapper } from './styles';
 
 const getStyles = (direction = '') => {
@@ -25,6 +26,7 @@ const AppBar = props => {
     ...rootProps
   } = props;
   const [hidden, setHidden] = React.useState(false);
+  const { lang } = useLanguage();
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -74,12 +76,12 @@ const AppBar = props => {
     >
       <Container>
         <Link href="/" passHref>
-          <StyledLink title="Furrow">
+          <StyledLink title="Crafti">
             <Logo {...logoProps} />
           </StyledLink>
         </Link>
         <MenuWrapper>
-          <MenuButton title="Projects" />
+          <MenuButton title={lang === 'fr' ? 'Projets' : 'Projects'} />
         </MenuWrapper>
       </Container>
     </Slider>

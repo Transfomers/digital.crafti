@@ -1,36 +1,57 @@
 import React from 'react';
 import useCursorStyle from '../../../hooks/useCursorStyle';
+import { useLanguage } from '../../../context/language';
 import AnimateOnScreen from '../../AnimateOnScreen';
 import SocialMedia from '../../SocialMedia';
 import { ContactSection } from './styles';
 
 const Contact = () => {
+  const { lang } = useLanguage();
   const { addCursorBorder, removeCursorBorder } = useCursorStyle();
 
   return (
     <AnimateOnScreen>
       <ContactSection>
         <div className="column">
-          <a
-            className="contact-text"
-            href="tel:+1.902.417.0634"
-            onMouseEnter={addCursorBorder}
-            onMouseLeave={removeCursorBorder}
-          >
-            +1.902.417.0634
-          </a>
-          <br />
-          <a
-            className="contact-text"
-            href="mailto:info@furrow.studio"
-            onMouseEnter={addCursorBorder}
-            onMouseLeave={removeCursorBorder}
-          >
-            info@furrow.studio
-          </a>
+          <div className="contact-group">
+            <a
+              className="contact-text"
+              href="mailto:contact@craftistudio.tech"
+              onMouseEnter={addCursorBorder}
+              onMouseLeave={removeCursorBorder}
+            >
+              contact@craftistudio.tech
+            </a>
+            <a
+              className="contact-text"
+              href="mailto:dev@crafti.digital"
+              onMouseEnter={addCursorBorder}
+              onMouseLeave={removeCursorBorder}
+            >
+              dev@crafti.digital
+            </a>
+          </div>
+          <div className="contact-group">
+            <a
+              className="contact-text"
+              href="tel:+237695266214"
+              onMouseEnter={addCursorBorder}
+              onMouseLeave={removeCursorBorder}
+            >
+              +237 695 266 214
+            </a>
+            <a
+              className="contact-text"
+              href="tel:+237679428243"
+              onMouseEnter={addCursorBorder}
+              onMouseLeave={removeCursorBorder}
+            >
+              +237 679 428 243
+            </a>
+          </div>
         </div>
         <address className="column contact-text">
-          15 Camburhill Ct Unit C<br /> Charlottetown, PE C1E 0E2
+          Yaoundé, {lang === 'fr' ? 'Cameroun' : 'Cameroon'}
         </address>
         <SocialMedia className="column" />
       </ContactSection>

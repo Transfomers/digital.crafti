@@ -2,7 +2,9 @@
 import React from 'react';
 import NextLink from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useThemeContext } from '../../context/theme';
 import { useMenuContext } from '../../context/menu';
+import { useLanguage } from '../../context/language';
 import useCursorStyle from '../../hooks/useCursorStyle';
 import useStyledTheme from '../../hooks/useStyledTheme';
 import useMediaQuery from '../../hooks/useMediaQuery';
@@ -26,6 +28,7 @@ import {
   Link,
   ArrowContainer,
   Footer,
+  FooterBlock,
   FooterText,
   VideoContainer,
   VideoReveal,
@@ -39,7 +42,9 @@ const Menu = () => {
   const videoContainerRef = React.useRef(null);
   const [revealVideo, setRevealVideo] = React.useState(null);
   const [isHovering, setIsHovering] = React.useState(false);
+  const { lang, toggleLang } = useLanguage();
   const theme = useStyledTheme();
+  const [themeState, themeDispatch] = useThemeContext();
   const [{ isMenuOpen }] = useMenuContext();
   const {
     addCursorBorder,
@@ -97,8 +102,26 @@ const Menu = () => {
         <Backdrop onAnimationComplete={handleAnimationComplete}>
           <Container ref={containerRef}>
             <Header>
-              <h3>Projects</h3>
-              <CloseButton title="Close" />
+              <h3>{lang === 'fr' ? 'Projets' : 'Projects'}</h3>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
+                <button 
+                  onClick={toggleLang}
+                  onMouseEnter={addCursorBorder}
+                  onMouseLeave={removeCursorBorder}
+                  style={{ background: 'none', border: 'none', color: 'inherit', font: 'inherit', cursor: 'pointer', fontSize: '1.125rem', fontWeight: 600 }}
+                >
+                  {lang === 'fr' ? 'FR / en' : 'fr / EN'}
+                </button>
+                <button 
+                  onClick={() => themeDispatch({ type: 'TOGGLE_THEME' })}
+                  onMouseEnter={addCursorBorder}
+                  onMouseLeave={removeCursorBorder}
+                  style={{ background: 'none', border: 'none', color: 'inherit', font: 'inherit', cursor: 'pointer', fontSize: '1.125rem', fontWeight: 600 }}
+                >
+                  {themeState.theme === 'light' ? 'DARK' : 'LIGHT'} MODE
+                </button>
+                <CloseButton />
+              </div>
             </Header>
             <Navigation>
               <List
@@ -132,7 +155,7 @@ const Menu = () => {
                         <ArrowContainer>
                           <Arrow fillColor={theme.background} />
                         </ArrowContainer>
-                        {route.title}
+                        {route.title[lang] || route.title.fr}
                       </Link>
                     </NextLink>
                   </motion.li>
@@ -140,29 +163,50 @@ const Menu = () => {
               </List>
             </Navigation>
             <Footer>
-              <FooterText
-                className="link"
-                as="a"
-                href="mailto:info@furrow.studio"
-                onMouseEnter={addCursorBorder}
-                onMouseLeave={removeCursorBorder}
-              >
-                info@furrow.studio
-              </FooterText>
-              <FooterText
-                className="link"
-                as="a"
-                href="tel:+1.902.417.0634"
-                onMouseEnter={addCursorBorder}
-                onMouseLeave={removeCursorBorder}
-              >
-                +1.902.417.0634
-              </FooterText>
-              <FooterText className="copyright">© Furrow 2020</FooterText>
+              <FooterBlock>
+                <FooterText
+                  className="link"
+                  as="a"
+                  href="mailto:contact@craftistudio.tech"
+                  onMouseEnter={addCursorBorder}
+                  onMouseLeave={removeCursorBorder}
+                >
+                  contact@craftistudio.tech
+                </FooterText>
+                <FooterText
+                  className="link"
+                  as="a"
+                  href="mailto:dev@crafti.digital"
+                  onMouseEnter={addCursorBorder}
+                  onMouseLeave={removeCursorBorder}
+                >
+                  dev@crafti.digital
+                </FooterText>
+                <FooterText
+                  className="link"
+                  as="a"
+                  href="tel:+237695266214"
+                  onMouseEnter={addCursorBorder}
+                  onMouseLeave={removeCursorBorder}
+                  style={{ marginTop: '16px' }}
+                >
+                  +237 695 266 214
+                </FooterText>
+                <FooterText
+                  className="link"
+                  as="a"
+                  href="tel:+237679428243"
+                  onMouseEnter={addCursorBorder}
+                  onMouseLeave={removeCursorBorder}
+                >
+                  +237 679 428 243
+                </FooterText>
+              </FooterBlock>
+              <FooterText className="copyright">© Crafti 2026</FooterText>
               {isMobile && (
                 <Address>
                   <FooterText>
-                    15 Camburhill Ct Unit C<br /> Charlottetown, PE C1E 0E2
+                    Yaoundé, Cameroon
                   </FooterText>
                 </Address>
               )}
@@ -180,13 +224,14 @@ const Menu = () => {
               {routes.map(route => (
                 <Video
                   key={route.id}
-                  src={`/videos/${route.video}`}
+                  src={route.video.startsWith('http') ? route.video : `/videos/${route.video}`}
                   variants={videoVariants}
                   initial="hidden"
                   animate={route.id === revealVideo ? 'show' : 'hidden'}
                   transition={transition}
                   loop
                   autoPlay
+                  style={{ filter: 'grayscale(100%) brightness(0.7)' }}
                 ></Video>
               ))}
             </VideoContainer>

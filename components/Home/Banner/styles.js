@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { secondaryFontStyle } from '../../../styles/shared/text';
 
 export const BannerSection = styled.section`
   position: relative;
   height: 100vh;
   width: 100%;
-  margin-bottom: 305px;
+  margin-bottom: 240px;
   background: ${({ theme }) => theme.background};
 
   & canvas {
@@ -31,35 +32,52 @@ export const VideoContainer = styled.div`
   }
 `;
 
+export const BannerSubtitle = styled.div`
+  position: absolute;
+  top: 130px;
+  left: 48px;
+  ${secondaryFontStyle};
+  color: ${({ theme }) => theme.colors.red};
+  font-size: 1.15rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  z-index: 2;
+  pointer-events: none;
+
+  ${({ theme }) => theme.breakpoints.tablet`
+    top: 90px;
+    left: 24px;
+    font-size: 0.95rem;
+  `};
+`;
+
 export const BannerTitle = styled(motion.h1)`
   position: absolute;
-  bottom: -93px;
-  left: -20px;
-  font-size: 420px;
-  font-size: 26.25rem;
+  bottom: -60px;
+  left: 24px;
+  font-size: 22vw;
+  font-weight: 900;
   pointer-events: none;
-  line-height: 0.6714285714;
+  line-height: 0.76;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  margin: 0;
 
   & span {
     display: block;
     will-change: transform;
   }
 
-  ${({ theme }) => theme.breakpoints.small`
-    left: -10px;
-    bottom: -63px;
-    font-size: 280px;
-    font-size: 17.5rem;
-    line-height: .6821428571;
+  ${({ theme }) => theme.breakpoints.tablet`
+    left: 16px;
+    bottom: -30px;
+    font-size: 24vw;
+    line-height: 0.78;
   `};
 
-  ${({ theme }) => theme.breakpoints.tablet`
-    left: -6px;
-    bottom: -36px;
-    max-width: calc(100% + 6px);
-    font-size: 160px;
-    font-size: 10rem;
-    line-height: .68125;
-    overflow: hidden;
+  ${({ theme }) => theme.breakpoints.small`
+    left: 12px;
+    bottom: -20px;
+    font-size: 25vw;
   `};
 `;

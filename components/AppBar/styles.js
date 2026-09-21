@@ -19,17 +19,25 @@ export const Container = styled.div`
 `;
 
 export const StyledLink = styled.a`
-  display: block;
+  display: flex;
+  align-items: center;
   position: absolute;
-  top: 54px;
+  top: 36px;
   left: auto;
-  width: 131px;
-  height: 23px;
+  width: 220px;
+  height: 57px;
+  cursor: pointer;
 
   ${({ theme }) => theme.breakpoints.tablet`
-    width: 99px;
-    height: 17px;
-    top: 32px;
+    width: 160px;
+    height: 42px;
+    top: 20px;
+  `};
+
+  ${({ theme }) => theme.breakpoints.small`
+    width: 130px;
+    height: 34px;
+    top: 22px;
   `};
 `;
 

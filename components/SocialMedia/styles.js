@@ -15,15 +15,17 @@ export const Container = styled.div`
 export const Link = styled.a`
   ${secondaryFontStyle};
   padding: 0 10px;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   vertical-align: middle;
-  width: 41px;
-  height: 21px;
+  height: 24px;
   line-height: 24px;
 
-  &:nth-of-type(2) {
-    width: 31px;
-    height: 24px;
+  & svg {
+    max-height: 20px;
+    width: auto;
+    display: block;
   }
 
   &:hover svg path {
