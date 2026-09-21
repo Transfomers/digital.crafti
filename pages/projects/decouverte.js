@@ -495,43 +495,6 @@ const DiscoveryPage = () => {
           </AnimateOnScreen>
         </SectionContainer>
 
-        {/* PDF BANNER */}
-        <SectionContainer>
-          <AnimateOnScreen>
-            <div style={{
-              padding: '48px 40px',
-              borderRadius: '16px',
-              border: '1.5px solid #EA281E',
-              background: theme.name === 'light' ? '#fff8f8' : 'rgba(234,40,30,0.06)',
-              display: 'flex',
-              flexWrap: 'wrap',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: '24px'
-            }}>
-              <div>
-                <span style={{ color: '#EA281E', fontSize: '0.875rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1.5px', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                  <FilePdf size={18} color="#EA281E" />
-                  {lang === 'fr' ? 'DOSSIER DE CADRAGE' : 'SCOPING DOSSIER'}
-                </span>
-                <h3 style={{ margin: '0 0 8px', fontSize: '1.75rem', fontWeight: 900, textTransform: 'uppercase' }}>
-                  {lang === 'fr' ? 'Télécharger les Résultats de Découverte' : 'Download Discovery Findings'}
-                </h3>
-                <p style={{ margin: 0, opacity: 0.85, fontSize: '1.05rem', maxWidth: '600px' }}>
-                  {lang === 'fr'
-                    ? 'Découvrez les modèles d’analyse, les grilles de questions et les exigences structurelles du projet.'
-                    : 'Discover analysis models, question frameworks, and structural project requirements.'}
-                </p>
-              </div>
-              <PdfViewerModal
-                pdfUrl="/docs/presentation-crafti.pdf"
-                title={lang === 'fr' ? 'Dossier de Découverte CRAFTI' : 'CRAFTI Discovery Dossier'}
-                buttonText={lang === 'fr' ? 'Consulter le PDF' : 'View PDF'}
-              />
-            </div>
-          </AnimateOnScreen>
-        </SectionContainer>
-
         {/* CALL TO ACTION & ROUTE NAV */}
         <NextProjectNav>
           <AnimateOnScreen>

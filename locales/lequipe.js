@@ -10,6 +10,22 @@ export const translations = {
 
     members: [
       {
+        name: "Moïse Donald Ngueki",
+        role: "AI and Head of Developers",
+        tag: "Architecture & IA",
+        sub: "Direction technique globale, architecture logicielle scalable, intégration des modèles d'IA et chatbots.",
+        linkedin: "https://www.linkedin.com/in/moise-donald-ngueki-a73150254/",
+        skills: [
+          "Direction technique et supervision globale de l'ingénierie",
+          "Architecture logicielle scalable et conception modulaire",
+          "Conception et intégration des modèles d'IA & Chatbots intelligents",
+          "Pipelines de données, RAG et bases de connaissances",
+          "Garde-fous éthiques et logique d'escalade vers l'humain",
+          "Revue de code, standards de haute performance et sécurité"
+        ],
+        quote: "L’IA sera utilisée là où elle apporte une réelle valeur, avec des mécanismes d’orientation vers l’humain lorsque la situation le nécessite."
+      },
+      {
         name: "Ajana Mboussi Safoura",
         role: "Product Owner",
         tag: "Pilotage & Vision",
@@ -25,24 +41,8 @@ export const translations = {
         ]
       },
       {
-        name: "Moïse Donald Ngueki",
-        role: "Head of Developers & AI Lead",
-        tag: "Architecture & IA",
-        sub: "Leader technique garantissant l'architecture logicielle globale, les normes d'ingénierie et les systèmes d'IA.",
-        linkedin: "https://www.linkedin.com/in/moise-donald-ngueki-a73150254/",
-        skills: [
-          "Direction technique et supervision de l'équipe de développement",
-          "Architecture logicielle scalable et microservices",
-          "Conception et intégration des modèles d'IA & Chatbots intelligents",
-          "Pipelines de données, RAG et bases de connaissances",
-          "Garde-fous éthiques et logique d'escalade vers l'humain",
-          "Revue de code, standards de performance et sécurité"
-        ],
-        quote: "L’IA sera utilisée là où elle apporte une réelle valeur, avec des mécanismes d’orientation vers l’humain lorsque la situation le nécessite."
-      },
-      {
         name: "Abogo Emmanuel Atangana",
-        role: "Mid Developer — Backend",
+        role: "Mid Dev Backend",
         tag: "Ingénierie Backend",
         sub: "Architecte des APIs, des bases de données et de la logique métier serveur.",
         linkedin: "https://www.linkedin.com/in/abogo-emmanuel-atangana-43b063396/",
@@ -57,7 +57,7 @@ export const translations = {
       },
       {
         name: "Yvan Duplex Pacom Tekeng Djang",
-        role: "Mid Developer — Frontend & Fullstack",
+        role: "Mid Dev",
         tag: "Développement Applicatif",
         sub: "Bâtisseur des interfaces immersives et intégrateur des flux utilisateurs réactifs.",
         linkedin: "https://www.linkedin.com/in/yvan-duplex-pacom-tekeng-djang-129abb336/",
@@ -102,6 +102,22 @@ export const translations = {
 
     members: [
       {
+        name: "Moïse Donald Ngueki",
+        role: "AI and Head of Developers",
+        tag: "Architecture & AI",
+        sub: "Technical leader overseeing software architecture, engineering standards, and intelligent AI systems.",
+        linkedin: "https://www.linkedin.com/in/moise-donald-ngueki-a73150254/",
+        skills: [
+          "Engineering leadership and developer mentorship",
+          "Scalable software architecture and microservices design",
+          "Design and integration of intelligent AI models & chatbots",
+          "Data pipelines, RAG frameworks, and knowledge bases",
+          "Ethical guardrails and human-in-the-loop escalation logic",
+          "Code reviews, high-performance benchmarks, and security"
+        ],
+        quote: "AI will be leveraged where it creates real value, with seamless routing mechanisms to humans whenever needed."
+      },
+      {
         name: "Ajana Mboussi Safoura",
         role: "Product Owner",
         tag: "Management & Vision",
@@ -117,24 +133,8 @@ export const translations = {
         ]
       },
       {
-        name: "Moïse Donald Ngueki",
-        role: "Head of Developers & AI Lead",
-        tag: "Architecture & AI",
-        sub: "Technical leader overseeing software architecture, engineering standards, and intelligent AI systems.",
-        linkedin: "https://www.linkedin.com/in/moise-donald-ngueki-a73150254/",
-        skills: [
-          "Engineering leadership and developer mentorship",
-          "Scalable software architecture and microservices design",
-          "Design and integration of intelligent AI models & chatbots",
-          "Data pipelines, RAG frameworks, and knowledge bases",
-          "Ethical guardrails and human-in-the-loop escalation logic",
-          "Code reviews, high-performance benchmarks, and security"
-        ],
-        quote: "AI will be leveraged where it creates real value, with seamless routing mechanisms to humans whenever needed."
-      },
-      {
         name: "Abogo Emmanuel Atangana",
-        role: "Mid Developer — Backend",
+        role: "Mid Dev Backend",
         tag: "Backend Engineering",
         sub: "Architect of robust APIs, databases, and secure server-side business logic.",
         linkedin: "https://www.linkedin.com/in/abogo-emmanuel-atangana-43b063396/",
@@ -149,7 +149,7 @@ export const translations = {
       },
       {
         name: "Yvan Duplex Pacom Tekeng Djang",
-        role: "Mid Developer — Frontend & Fullstack",
+        role: "Mid Dev",
         tag: "Application Development",
         sub: "Crafting fluid digital interfaces and bringing user interactions to life.",
         linkedin: "https://www.linkedin.com/in/yvan-duplex-pacom-tekeng-djang-129abb336/",

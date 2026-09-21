@@ -816,43 +816,6 @@ const OurMethodPage = () => {
           </AnimateOnScreen>
         </SectionContainer>
 
-        {/* PDF BANNER */}
-        <SectionContainer>
-          <AnimateOnScreen>
-            <div style={{
-              padding: '48px 40px',
-              borderRadius: '16px',
-              border: '1.5px solid #EA281E',
-              background: theme.name === 'light' ? '#fff8f8' : 'rgba(234,40,30,0.06)',
-              display: 'flex',
-              flexWrap: 'wrap',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: '24px'
-            }}>
-              <div>
-                <span style={{ color: '#EA281E', fontSize: '0.875rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1.5px', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                  <FilePdf size={18} color="#EA281E" />
-                  {lang === 'fr' ? 'DOSSIER MÉTHODOLOGIQUE COMPLET' : 'FULL METHODOLOGY DOSSIER'}
-                </span>
-                <h3 style={{ margin: '0 0 8px', fontSize: '1.75rem', fontWeight: 900, textTransform: 'uppercase' }}>
-                  {lang === 'fr' ? 'Télécharger la Méthodologie Crafti' : 'Download the Crafti Methodology'}
-                </h3>
-                <p style={{ margin: 0, opacity: 0.85, fontSize: '1.05rem', maxWidth: '600px' }}>
-                  {lang === 'fr'
-                    ? 'Le guide complet décrivant les 9 étapes du projet, les protocoles de validation et la matrice des livrables.'
-                    : 'The complete guide describing the 9 project stages, validation protocols, and deliverables matrix.'}
-                </p>
-              </div>
-              <PdfViewerModal
-                pdfUrl="/docs/presentation-crafti.pdf"
-                title={lang === 'fr' ? 'Manuel Méthodologique CRAFTI' : 'CRAFTI Methodology Handbook'}
-                buttonText={lang === 'fr' ? 'Consulter le PDF' : 'View PDF'}
-              />
-            </div>
-          </AnimateOnScreen>
-        </SectionContainer>
-
         {/* CALL TO ACTION & ROUTE NAV */}
         <NextProjectNav>
           <AnimateOnScreen>

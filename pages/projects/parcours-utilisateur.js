@@ -17,7 +17,6 @@ import {
   Search,
   Sparkles,
   CheckCircle,
-  FilePdf,
 } from '../../components/Icons/ProjectIcons';
 
 // ================= STYLES ================= //
@@ -352,42 +351,6 @@ const ParcoursPage = () => {
           </AnimateOnScreen>
         </SectionContainer>
         
-        {/* PDF BANNER */}
-        <SectionContainer>
-          <AnimateOnScreen>
-            <div style={{
-              padding: '48px 40px',
-              borderRadius: '16px',
-              border: '1.5px solid #EA281E',
-              background: '#fff8f8',
-              display: 'flex',
-              flexWrap: 'wrap',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: '24px'
-            }}>
-              <div>
-                <span style={{ color: '#EA281E', fontSize: '0.875rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1.5px', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                  <FilePdf size={18} color="#EA281E" />
-                  {lang === 'fr' ? 'EXPÉRIENCE UTILISATEUR' : 'USER EXPERIENCE'}
-                </span>
-                <h3 style={{ margin: '0 0 8px', fontSize: '1.75rem', fontWeight: 900, textTransform: 'uppercase' }}>
-                  {lang === 'fr' ? 'Dossier Ergonomie & Parcours' : 'UX & Journey Dossier'}
-                </h3>
-                <p style={{ margin: 0, opacity: 0.85, fontSize: '1.05rem', maxWidth: '600px' }}>
-                  {lang === 'fr'
-                    ? 'Découvrez les maquettes, personas et parcours d’engagement documentés.'
-                    : 'Discover wireframes, personas, and documented engagement journeys.'}
-                </p>
-              </div>
-              <PdfViewerModal
-                pdfUrl="/docs/presentation-crafti.pdf"
-                title={lang === 'fr' ? 'Parcours Utilisateurs CRAFTI' : 'CRAFTI User Journeys'}
-                buttonText={lang === 'fr' ? 'Consulter le PDF' : 'View PDF'}
-              />
-            </div>
-          </AnimateOnScreen>
-        </SectionContainer>
 
         {/* CALL TO ACTION & ROUTE NAV */}
         <NextProjectNav>

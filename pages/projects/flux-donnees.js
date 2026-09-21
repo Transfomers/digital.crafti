@@ -16,7 +16,6 @@ import {
   Server,
   GitBranch,
   Shield,
-  FilePdf,
   CheckCircle,
 } from '../../components/Icons/ProjectIcons';
 
@@ -310,42 +309,6 @@ const FluxDonneesPage = () => {
           </AnimateOnScreen>
         </SectionContainer>
         
-        {/* PDF BANNER */}
-        <SectionContainer>
-          <AnimateOnScreen>
-            <div style={{
-              padding: '48px 40px',
-              borderRadius: '16px',
-              border: '1.5px solid #EA281E',
-              background: '#fff8f8',
-              display: 'flex',
-              flexWrap: 'wrap',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: '24px'
-            }}>
-              <div>
-                <span style={{ color: '#EA281E', fontSize: '0.875rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1.5px', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                  <FilePdf size={18} color="#EA281E" />
-                  {lang === 'fr' ? 'SCHÉMA DIRECTEUR DES DONNÉES' : 'DATA MASTER PLAN'}
-                </span>
-                <h3 style={{ margin: '0 0 8px', fontSize: '1.75rem', fontWeight: 900, textTransform: 'uppercase' }}>
-                  {lang === 'fr' ? 'Modèle de Données & Protocoles API' : 'Data Model & API Protocols'}
-                </h3>
-                <p style={{ margin: 0, opacity: 0.85, fontSize: '1.05rem', maxWidth: '600px' }}>
-                  {lang === 'fr'
-                    ? 'Découvrez les dictionnaires de données, les schémas d’entités et les politiques de confidentialité.'
-                    : 'Discover data dictionaries, entity schemas, and data privacy policies.'}
-                </p>
-              </div>
-              <PdfViewerModal
-                pdfUrl="/docs/presentation-crafti.pdf"
-                title={lang === 'fr' ? 'Architecture des Données CRAFTI' : 'CRAFTI Data Architecture'}
-                buttonText={lang === 'fr' ? 'Consulter le PDF' : 'View PDF'}
-              />
-            </div>
-          </AnimateOnScreen>
-        </SectionContainer>
 
         {/* CALL TO ACTION & ROUTE NAV */}
         <NextProjectNav>
