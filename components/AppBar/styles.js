@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import containerStyles from '../../styles/shared/container';
 
-export const Slider = styled(({ renderAs, isScrolled, ...props }) => {
+export const Slider = styled(({ renderAs, ...props }) => {
   const Component = motion[renderAs] || 'div';
   return <Component {...props} />;
 })`
@@ -11,24 +11,6 @@ export const Slider = styled(({ renderAs, isScrolled, ...props }) => {
   left: 0;
   will-change: transform;
   z-index: ${({ theme }) => theme.zIndex.slider};
-  ${({ isScrolled, theme, renderAs }) =>
-    renderAs === 'header' && isScrolled
-      ? `
-    background: ${theme.name === 'light' ? 'rgba(255, 255, 255, 0.88)' : 'rgba(10, 10, 10, 0.88)'};
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    box-shadow: 0 4px 20px ${theme.name === 'light' ? 'rgba(0, 0, 0, 0.05)' : 'rgba(0, 0, 0, 0.4)'};
-    height: 110px;
-
-    ${theme.breakpoints.tablet`
-      height: 76px;
-    `};
-
-    ${theme.breakpoints.small`
-      height: 68px;
-    `};
-  `
-      : ''}
 `;
 
 export const Container = styled.div`

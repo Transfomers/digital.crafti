@@ -9,19 +9,26 @@ import MenuButton from '../MenuButton';
 export const Backdrop = styled(DefaultBackdrop)`
   background: ${({ theme }) => theme.colors.red};
   color: ${({ theme }) => theme.background};
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+
+  ${({ theme }) => theme.breakpoints.small`
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  `};
 `;
 
 export const Container = styled.div`
   ${containerStyles};
   width: 100%;
-  height: auto;
-  min-height: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-bottom: 40px;
+
+  ${({ theme }) => theme.breakpoints.small`
+    height: auto;
+    min-height: 100%;
+    padding-bottom: 40px;
+  `};
 `;
 
 const Row = styled.div`
@@ -33,8 +40,6 @@ const Row = styled.div`
 `;
 
 export const Header = styled(Row)`
-  padding: 32px 0 16px;
-
   & h3 {
     margin: -20px;
     margin-left: 0;
@@ -42,7 +47,7 @@ export const Header = styled(Row)`
   }
 
   ${({ theme }) => theme.breakpoints.tablet`
-    padding: 20px 0 12px;
+    padding: 24px 0;
 
     & h3 {
       font-size: 1rem;
@@ -52,7 +57,7 @@ export const Header = styled(Row)`
   `};
 
   ${({ theme }) => theme.breakpoints.small`
-    padding: 16px 0 10px;
+    padding: 16px 0;
     flex-wrap: wrap;
     gap: 12px;
   `};
@@ -61,7 +66,6 @@ export const Header = styled(Row)`
 export const Footer = styled(Row)`
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 24px 0 32px;
 
   ${({ theme }) => theme.breakpoints.small`
     position: relative;
@@ -145,71 +149,59 @@ export const SocialMedia = styled(DefaultSocialMedia)`
 `;
 
 export const Navigation = styled.nav`
-  width: 100%;
-  height: auto;
-  margin: 12px 0 20px;
+  height: 462px;
+
+  ${({ theme }) => theme.breakpoints.small`
+    position: static;
+    height: auto;
+    margin: 20px 0 32px;
+  `};
 `;
 
 export const List = styled(motion.ul)`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-  width: 100%;
-  margin: 0;
-  padding: 0;
+  display: inline-block;
 
   & li {
     display: block;
-    width: 100%;
+    overflow: hidden;
+    float: left;
+    clear: left;
   }
 `;
 
 export const Link = styled(motion.a)`
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 2.1rem;
-  line-height: 1.35;
+  font-size: 57px;
+  font-size: 3.5625rem;
+  line-height: 1.5964912281;
   font-weight: 900;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.background};
-  cursor: pointer;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-
-  &:hover {
-    opacity: 0.9;
-    transform: translateX(8px);
-  }
+  will-change: transform;
 
   ${({ theme }) => theme.breakpoints.tablet`
-    font-size: 1.45rem;
-    line-height: 1.35;
+    font-size: 1.75rem;
+    line-height: 1.7857142857;
   `};
 
   ${({ theme }) => theme.breakpoints.small`
-    font-size: 1.15rem;
-    line-height: 1.4;
+    font-size: 1.35rem;
+    line-height: 1.5;
   `};
 `;
 
 export const ArrowContainer = styled.span`
-  display: inline-flex;
-  align-items: center;
-  width: 22px;
-  height: 16px;
-  opacity: 0;
-  transform: translateX(-6px);
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  display: block;
+  overflow: hidden;
+  width: 68px;
+  height: 57px;
+  padding-right: 6px;
+  margin-right: 6px;
 
   & svg {
-    width: 100%;
-    height: 100%;
-  }
-
-  ${Link}:hover & {
-    opacity: 1;
-    transform: translateX(0);
+    float: right;
+    width: 101px;
+    height: 57px;
   }
 
   ${({ theme }) => theme.breakpoints.small`
