@@ -3,6 +3,8 @@ import Link from 'next/link';
 import Logo from '../Icons/Logo';
 import MenuButton from '../MenuButton';
 import { useLanguage } from '../../context/language';
+import { useMenuContext } from '../../context/menu';
+import { LanguageToggle, ThemeToggle } from '../Toggles';
 import { Slider, Container, StyledLink, MenuWrapper } from './styles';
 
 const getStyles = (direction = '') => {
@@ -27,6 +29,7 @@ const AppBar = props => {
   } = props;
   const [hidden, setHidden] = React.useState(false);
   const { lang } = useLanguage();
+  const [, menuDispatch] = useMenuContext();
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -76,11 +79,17 @@ const AppBar = props => {
     >
       <Container>
         <Link href="/" passHref>
-          <StyledLink title="Crafti">
+          <StyledLink title="Crafti" onClick={() => menuDispatch({ type: 'CLOSE_MENU' })}>
             <Logo {...logoProps} />
           </StyledLink>
         </Link>
         <MenuWrapper>
+          {direction === 'down' && (
+            <>
+              <LanguageToggle />
+              <ThemeToggle />
+            </>
+          )}
           <MenuButton title={lang === 'fr' ? 'Projets' : 'Projects'} />
         </MenuWrapper>
       </Container>

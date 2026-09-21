@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useThemeContext } from '../../context/theme';
 import { useMenuContext } from '../../context/menu';
@@ -10,6 +11,7 @@ import useStyledTheme from '../../hooks/useStyledTheme';
 import useMediaQuery from '../../hooks/useMediaQuery';
 import routes from '../../utils/constants/routes';
 import Arrow from '../Icons/Arrow';
+import { LanguageToggle, ThemeToggle } from '../Toggles';
 import {
   listVariants,
   listItemsVariants,
@@ -38,14 +40,14 @@ import {
 } from './styles';
 
 const Menu = () => {
+  const router = useRouter();
   const containerRef = React.useRef(null);
   const videoContainerRef = React.useRef(null);
   const [revealVideo, setRevealVideo] = React.useState(null);
   const [isHovering, setIsHovering] = React.useState(false);
-  const { lang, toggleLang } = useLanguage();
+  const { lang } = useLanguage();
   const theme = useStyledTheme();
-  const [themeState, themeDispatch] = useThemeContext();
-  const [{ isMenuOpen }] = useMenuContext();
+  const [{ isMenuOpen }, menuDispatch] = useMenuContext();
   const {
     addCursorBorder,
     removeCursorBorder,
@@ -55,6 +57,24 @@ const Menu = () => {
   const isMobile = useMediaQuery(
     ({ breakpoints }) => `(max-width:${breakpoints.sizes.small}px)`,
   );
+
+  const handleCloseMenu = React.useCallback(() => {
+    removeCursorBorder();
+    menuDispatch({ type: 'CLOSE_MENU' });
+  }, [removeCursorBorder, menuDispatch]);
+
+  React.useEffect(() => {
+    const handleRouteChange = () => {
+      menuDispatch({ type: 'CLOSE_MENU' });
+      resetCursorColor();
+      removeCursorBorder();
+    };
+
+    router.events.on('routeChangeStart', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange);
+    };
+  }, [router, menuDispatch, resetCursorColor, removeCursorBorder]);
 
   const handleAnimationComplete = React.useCallback(() => {
     addCursorColor(theme.text);
@@ -103,24 +123,16 @@ const Menu = () => {
           <Container ref={containerRef}>
             <Header>
               <h3>{lang === 'fr' ? 'Projets' : 'Projects'}</h3>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
-                <button 
-                  onClick={toggleLang}
-                  onMouseEnter={addCursorBorder}
-                  onMouseLeave={removeCursorBorder}
-                  style={{ background: 'none', border: 'none', color: 'inherit', font: 'inherit', cursor: 'pointer', fontSize: '1.125rem', fontWeight: 600 }}
-                >
-                  {lang === 'fr' ? 'FR / en' : 'fr / EN'}
-                </button>
-                <button 
-                  onClick={() => themeDispatch({ type: 'TOGGLE_THEME' })}
-                  onMouseEnter={addCursorBorder}
-                  onMouseLeave={removeCursorBorder}
-                  style={{ background: 'none', border: 'none', color: 'inherit', font: 'inherit', cursor: 'pointer', fontSize: '1.125rem', fontWeight: 600 }}
-                >
-                  {themeState.theme === 'light' ? 'DARK' : 'LIGHT'} MODE
-                </button>
-                <CloseButton />
+              <div style={{ display: 'flex', alignItems: 'center', gap: isMobile ? '10px' : '20px' }}>
+                <LanguageToggle
+                  activeBg={theme.background}
+                  invertColor={theme.colors.red}
+                />
+                <ThemeToggle
+                  activeBg={theme.background}
+                  invertColor={theme.colors.red}
+                />
+                <CloseButton onClick={handleCloseMenu} />
               </div>
             </Header>
             <Navigation>
@@ -140,10 +152,11 @@ const Menu = () => {
                       ease: transition.ease,
                     }}
                   >
-                    <NextLink href={route.path}>
+                    <NextLink href={route.path} passHref>
                       <Link
                         key={`${route.id}_${isMobile}`}
                         name={route.id}
+                        onClick={handleCloseMenu}
                         onHoverStart={handleHoverStart}
                         onHoverEnd={handleHoverEnd}
                         custom={{ isMobile, color: theme.text }}
@@ -168,6 +181,7 @@ const Menu = () => {
                   className="link"
                   as="a"
                   href="mailto:contact@craftistudio.tech"
+                  onClick={handleCloseMenu}
                   onMouseEnter={addCursorBorder}
                   onMouseLeave={removeCursorBorder}
                 >
@@ -177,6 +191,7 @@ const Menu = () => {
                   className="link"
                   as="a"
                   href="mailto:dev@crafti.digital"
+                  onClick={handleCloseMenu}
                   onMouseEnter={addCursorBorder}
                   onMouseLeave={removeCursorBorder}
                 >
@@ -186,6 +201,7 @@ const Menu = () => {
                   className="link"
                   as="a"
                   href="tel:+237695266214"
+                  onClick={handleCloseMenu}
                   onMouseEnter={addCursorBorder}
                   onMouseLeave={removeCursorBorder}
                   style={{ marginTop: '16px' }}
@@ -196,6 +212,7 @@ const Menu = () => {
                   className="link"
                   as="a"
                   href="tel:+237679428243"
+                  onClick={handleCloseMenu}
                   onMouseEnter={addCursorBorder}
                   onMouseLeave={removeCursorBorder}
                 >

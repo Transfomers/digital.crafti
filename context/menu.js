@@ -13,6 +13,18 @@ const rootReducer = (state, action) => {
         isMenuOpen: !state.isMenuOpen,
       };
     }
+    case 'CLOSE_MENU': {
+      return {
+        ...state,
+        isMenuOpen: false,
+      };
+    }
+    case 'OPEN_MENU': {
+      return {
+        ...state,
+        isMenuOpen: true,
+      };
+    }
     default: {
       return state;
     }

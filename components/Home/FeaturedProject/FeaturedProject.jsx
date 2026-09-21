@@ -101,7 +101,16 @@ const FeaturedProject = () => {
                 </ProjectTitle>
               </ProjectInfo>
               <VideoPreview>
-                <video loop autoPlay muted src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Christ_Church_Cathedral_Dublin_video.webm" style={{ filter: 'grayscale(100%) brightness(0.7)' }} />
+                <video
+                  loop
+                  autoPlay
+                  muted
+                  playsInline
+                  style={{ filter: 'grayscale(100%) brightness(0.7)' }}
+                >
+                  <source src="/videos/featured-video.mp4" type="video/mp4" />
+                  <source src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Christ_Church_Cathedral_Dublin_video.webm" type="video/webm" />
+                </video>
               </VideoPreview>
             </ProjectAnchor>
           </Link>

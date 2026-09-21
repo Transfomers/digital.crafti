@@ -9,6 +9,11 @@ import MenuButton from '../MenuButton';
 export const Backdrop = styled(DefaultBackdrop)`
   background: ${({ theme }) => theme.colors.red};
   color: ${({ theme }) => theme.background};
+
+  ${({ theme }) => theme.breakpoints.small`
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  `};
 `;
 
 export const Container = styled.div`
@@ -18,6 +23,12 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  ${({ theme }) => theme.breakpoints.small`
+    height: auto;
+    min-height: 100%;
+    padding-bottom: 40px;
+  `};
 `;
 
 const Row = styled.div`
@@ -36,12 +47,19 @@ export const Header = styled(Row)`
   }
 
   ${({ theme }) => theme.breakpoints.tablet`
-    padding: 29px 0;
+    padding: 24px 0;
 
     & h3 {
-      font-size: 1.125rem;
-      line-height: 1.2777777778;
+      font-size: 1rem;
+      line-height: 1.2;
+      margin: 0;
     }
+  `};
+
+  ${({ theme }) => theme.breakpoints.small`
+    padding: 16px 0;
+    flex-wrap: wrap;
+    gap: 12px;
   `};
 `;
 
@@ -97,17 +115,16 @@ export const FooterText = styled.p`
     line-height: 1.0714285714;
 
     &.copyright {
-      position: absolute;
-      right: 0;
-      bottom: 54px;
-      font-size: 0.6875rem;
-      line-height: 1.1818181818;
+      position: static;
+      margin-top: 14px;
+      font-size: 0.75rem;
+      line-height: 1.2;
     }
   `};
 
   ${({ theme }) => theme.breakpoints.tablet`
     &.copyright {
-      bottom: 32px;
+      margin-top: 10px;
     }
   `};
 `;
@@ -121,8 +138,9 @@ export const SocialMedia = styled(DefaultSocialMedia)`
   }
 
   ${({ theme }) => theme.breakpoints.small`
-    width: unset;
+    width: 100%;
     justify-content: flex-start;
+    margin-top: 16px;
   `};
 `;
 
@@ -130,8 +148,9 @@ export const Navigation = styled.nav`
   height: 462px;
 
   ${({ theme }) => theme.breakpoints.small`
-    position: absolute;
-    top: 94px;
+    position: static;
+    height: auto;
+    margin: 20px 0 32px;
   `};
 `;
 
@@ -159,6 +178,11 @@ export const Link = styled(motion.a)`
   ${({ theme }) => theme.breakpoints.tablet`
     font-size: 1.75rem;
     line-height: 1.7857142857;
+  `};
+
+  ${({ theme }) => theme.breakpoints.small`
+    font-size: 1.35rem;
+    line-height: 1.5;
   `};
 `;
 
@@ -240,6 +264,8 @@ export const CloseButton = styled(MenuButton)`
   }
 
   ${({ theme }) => theme.breakpoints.tablet`
+    margin: 0;
+
     &::before {
       margin-top: 0;
     }

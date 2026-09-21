@@ -39,6 +39,7 @@ export default createGlobalStyle`
     overscroll-behavior: none;
     height: auto;
     overflow-y: visible;
+    overflow-x: hidden;
     background: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.text};
   }
@@ -108,12 +109,16 @@ export default createGlobalStyle`
   }
 
   ${({ theme }) => theme.breakpoints.small`
+    html {
+      cursor: auto;
+    }
+
     a {
-      cursor:pointer;
+      cursor: pointer;
     }
 
     button {
-      cursor:pointer;
+      cursor: pointer;
     }
   `};
 `;

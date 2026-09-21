@@ -29,14 +29,14 @@ export const StyledLink = styled.a`
   cursor: pointer;
 
   ${({ theme }) => theme.breakpoints.tablet`
-    width: 160px;
-    height: 42px;
-    top: 20px;
+    width: 150px;
+    height: 40px;
+    top: 24px;
   `};
 
   ${({ theme }) => theme.breakpoints.small`
-    width: 130px;
-    height: 34px;
+    width: 100px;
+    height: 30px;
     top: 22px;
   `};
 `;
@@ -46,8 +46,19 @@ export const MenuWrapper = styled.div`
   top: 54px;
   right: 32px;
   margin: -20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 
   ${({ theme }) => theme.breakpoints.tablet`
-    top: 29px;
+    top: 28px;
+    right: 20px;
+    gap: 10px;
+  `};
+
+  ${({ theme }) => theme.breakpoints.small`
+    top: 20px;
+    right: 16px;
+    gap: 6px;
   `};
 `;
